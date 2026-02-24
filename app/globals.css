@@ -24,6 +24,7 @@ body {
 .nav-cursor:hover {
   cursor: url("/cursor-yellow.svg"), pointer;
 }
+
 @keyframes scroll-line {
   0% {
     transform: translateY(-100%);
@@ -54,4 +55,30 @@ body {
 
 .animate-bounce-slow {
   animation: bounceSlow 1.8s infinite ease-in-out;
+}
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 40s linear infinite;
+}
+
+/* Scroll Left (Bottom Row) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
 }

@@ -28,7 +28,7 @@ export default function Hero() {
 
   const handleNavigate = (side: Side) => {
     if (side === "left") router.push("/design");
-    if (side === "right") router.push("/development");
+    if (side === "right") router.push("/strategy");
   };
 
   // 👉 NEW: scroll to next section
@@ -55,10 +55,9 @@ export default function Hero() {
           transition-all duration-700 ease-in-out
           cursor-pointer overflow-hidden
           w-full h-1/2 md:h-full
-          ${
-            active === "left"
-              ? "md:w-[70%]"
-              : active === "right"
+          ${active === "left"
+            ? "md:w-[70%]"
+            : active === "right"
               ? "md:w-[30%]"
               : "md:w-1/2"
           }
@@ -79,9 +78,8 @@ export default function Hero() {
         </video>
 
         <div
-          className={`absolute inset-0 transition-colors duration-700 ${
-            active === "left" ? "bg-[#FFF9E6]/20" : "bg-[#FFF9E6]/40"
-          }`}
+          className={`absolute inset-0 transition-colors duration-700 ${active === "left" ? "bg-[#FFF9E6]/20" : "bg-[#FFF9E6]/40"
+            }`}
         />
 
         <div className="relative z-10 text-center px-6 max-w-md">
@@ -97,11 +95,10 @@ export default function Hero() {
           </p>
 
           <div
-            className={`mt-10 transition-all duration-700 ${
-              active === "left"
+            className={`mt-10 transition-all duration-700 ${active === "left"
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6 pointer-events-none"
-            }`}
+              }`}
           >
             <button className="px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-tr-2xl rounded-bl-2xl bg-[#365c47] text-white hover:scale-105 transition">
               Explore Design →
@@ -123,10 +120,9 @@ export default function Hero() {
           transition-all duration-700 ease-in-out
           cursor-pointer overflow-hidden
           w-full h-1/2 md:h-full
-          ${
-            active === "right"
-              ? "md:w-[70%]"
-              : active === "left"
+          ${active === "right"
+            ? "md:w-[70%]"
+            : active === "left"
               ? "md:w-[30%]"
               : "md:w-1/2"
           }
@@ -147,9 +143,8 @@ export default function Hero() {
         </video>
 
         <div
-          className={`absolute inset-0 transition-colors duration-700 ${
-            active === "right" ? "bg-[#365c47]/30" : "bg-[#365c47]/50"
-          }`}
+          className={`absolute inset-0 transition-colors duration-700 ${active === "right" ? "bg-[#365c47]/30" : "bg-[#365c47]/50"
+            }`}
         />
 
         <div className="relative z-10 text-center px-6 max-w-md">
@@ -165,11 +160,10 @@ export default function Hero() {
           </p>
 
           <div
-            className={`mt-10 transition-all duration-700 ${
-              active === "right"
+            className={`mt-10 transition-all duration-700 ${active === "right"
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6 pointer-events-none"
-            }`}
+              }`}
           >
             <button className="px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-tr-2xl rounded-bl-2xl bg-[#FFC62A] text-[#2F2F2F] hover:scale-105 transition">
               Explore Strategy →
