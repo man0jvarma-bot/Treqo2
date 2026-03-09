@@ -2,61 +2,61 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Briefcase,
-  Users,
-  Rocket,
-  Target,
+  Monitor,
+  Globe,
+  Zap,
+  ShieldCheck,
   Plus,
   TrendingUp,
-  Layers,
-  Sparkles
+  Sparkles,
+  BookOpen
 } from "lucide-react";
 
 const advantages = [
   {
-    id: "freelance",
+    id: "flexibility",
     colSpan: "lg:col-span-8",
-    icon: Rocket,
-    title: "Monetize from Month 1",
-    highlight: "Freelance Mastery",
-    desc: "We bridge the gap between technical skill and business acumen. Beyond mastering software, you learn the high-ticket sales psychology required to source global leads and negotiate premium retainers while still in training.",
+    icon: Globe,
+    title: "Learn Anywhere, Anytime",
+    highlight: "Global Accessibility",
+    desc: "Why settle for local when you can learn from the best worldwide? Our online suite eliminates geographical barriers, allowing you to master high-income skills at your own pace, on your own schedule, without the overhead of a physical commute.",
     stats: [
-      { label: "Lead Gen", value: "Live Training" },
-      { label: "Portfolio", value: "8 Modules" }
+      { label: "Access", value: "Lifetime" },
+      { label: "Format", value: "4K Video" }
     ],
   },
   {
-    id: "mentorship",
+    id: "suite-count",
     colSpan: "lg:col-span-4",
-    icon: Users,
-    title: "Senior Director",
-    highlight: "Mentorship",
-    desc: "Eliminate the guesswork of self-learning. Your projects undergo rigorous teardowns by industry veterans and growth leads who actively manage international accounts.",
+    icon: BookOpen,
+    title: "Master 8 Core",
+    highlight: "Specializations",
+    desc: "A comprehensive ecosystem covering Cinematic Editing, Motion Design, UI/UX, Growth Strategy, and more. One subscription, eight career paths.",
     stats: [
-      { label: "Support", value: "24/7 Portal" }
+      { label: "Curriculum", value: "8 Modules" }
     ],
   },
   {
-    id: "internship",
+    id: "speed",
     colSpan: "lg:col-span-5",
-    icon: Target,
-    title: "Agency-Grade",
-    highlight: "Execution",
-    desc: "Bypass hypothetical scenarios. You are integrated into live agency briefs, managing real-world deadlines and client feedback loops to ensure high-performance delivery.",
+    icon: Zap,
+    title: "Accelerated Path",
+    highlight: "Efficiency",
+    desc: "Standard education is slow. The TAC Suite is engineered for rapid absorption, focusing on 'Minimum Viable Knowledge'—the 20% of skills that generate 80% of professional results.",
     stats: [
-      { label: "Experience", value: "Real Brands" }
+      { label: "Velocity", value: "2x Faster" }
     ],
   },
   {
-    id: "jobs",
+    id: "community",
     colSpan: "lg:col-span-7",
-    icon: Briefcase,
-    title: "Global Talent",
-    highlight: "Pipeline",
-    desc: "Skip the noise of cold applications. Through the TACATHON showcase, your polished execution skills are presented directly to recruiters from companies like Meta, Google, and Amazon.",
+    icon: ShieldCheck,
+    title: "Verified Industry",
+    highlight: "Standard",
+    desc: "You aren't just buying videos; you're entering an ecosystem. Get access to the private TAC discord, premium asset packs, and direct feedback loops that ensure your online work meets global agency standards.",
     stats: [
-      { label: "Placements", value: "Meta / Google" },
-      { label: "Readiness", value: "Month 6" }
+      { label: "Network", value: "Private Hub" },
+      { label: "Resources", value: "100GB+ Assets" }
     ],
   }
 ];
@@ -76,19 +76,19 @@ export default function TacAdvantage() {
           >
             <Sparkles size={12} className="text-[#1D1D1D]" />
             <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-[#1D1D1D]">
-              The TAC ROI Pipeline
+              The TAC Suite Experience
             </span>
           </motion.div>
 
           <h2 className="text-4xl md:text-6xl font-semibold text-[#1D1D1D] leading-tight tracking-tight mb-2">
-            Beyond Education.
+            Limitless Learning.
           </h2>
           <h3 className="text-3xl md:text-5xl font-serif italic font-medium text-[#FFC62A]">
-            Built for Profit.
+            Zero Boundaries.
           </h3>
 
           <p className="mt-8 text-gray-500 text-sm md:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
-            We engineer your transition from amateur to highly-paid professional through a curriculum focused on cinematic editing, visual design, and growth strategy.
+            The TAC Suite Online is a curated collection of 8 high-performance courses designed to transform beginners into industry-ready creative professionals.
           </p>
         </div>
 

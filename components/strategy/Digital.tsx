@@ -9,7 +9,8 @@ import {
   ArrowUpRight, 
   CheckCircle2,
   TrendingUp,
-  Zap
+  Zap,
+  Sparkles
 } from "lucide-react";
 
 const marketingPillars = [
@@ -17,7 +18,7 @@ const marketingPillars = [
     id: "ai",
     title: "AI-Powered Elevation",
     icon: <Cpu size={24} />,
-    color: "#365c47",
+    color: "#365C47",
     summary: "Leveraging Large Language Models to automate hyper-personalized customer journeys.",
     metrics: { label: "Efficiency Boost", value: "+140%" },
     features: [
@@ -26,7 +27,7 @@ const marketingPillars = [
       "24/7 AI sales assistants",
       "Sentiment-driven retargeting"
     ],
-    description: "In 2026, AI is no longer a tool—it's the core. We move beyond simple automation to 'Predictive Experience Design,' where the interface adapts in real-time to the user's emotional state and search intent."
+    description: "In 2026, AI is the core. We move beyond simple automation to Predictive Experience Design inside the TAC Suite Online."
   },
   {
     id: "content",
@@ -41,7 +42,7 @@ const marketingPillars = [
       "Short-form video dominance",
       "UGC conversion engines"
     ],
-    description: "Traditional SEO has evolved into AEO. We focus on being the 'primary source' for AI answer engines (like Perplexity and SearchGPT) by building deep, authoritative content that robots want to cite."
+    description: "Traditional SEO has evolved into AEO. We focus on being the primary source for AI answer engines by building authoritative content."
   },
   {
     id: "performance",
@@ -56,13 +57,13 @@ const marketingPillars = [
       "Post-purchase LTV scaling",
       "Dynamic pricing optimization"
     ],
-    description: "Performance marketing is now about creative differentiation. Since bidding is mostly automated by AI, we win through superior psychological hooks and technical infrastructure that solves the cookie-less attribution gap."
+    description: "Performance marketing is now about creative differentiation. We win through superior psychological hooks."
   },
   {
     id: "data",
     title: "Data Intelligence",
     icon: <BarChart3 size={24} />,
-    color: "#365c47",
+    color: "#365C47",
     summary: "Turning first-party data into a competitive moat that competitors can't replicate.",
     metrics: { label: "Data Accuracy", value: "99.9%" },
     features: [
@@ -71,7 +72,7 @@ const marketingPillars = [
       "Privacy-first tracking (CDP)",
       "Revenue forecasting models"
     ],
-    description: "Data is the new oil, but only if it's refined. We build custom data pipelines that unify your CRM, social, and web analytics into a single source of truth for high-velocity decision making."
+    description: "Data is the new oil. We build custom data pipelines that unify your CRM and analytics into a single source of truth."
   }
 ];
 
@@ -79,26 +80,38 @@ export default function MarketingGrowthEngine() {
   const [activeTab, setActiveTab] = useState(marketingPillars[0]);
 
   return (
-    <section className="py-24 px-[5%] bg-[#111111] text-white overflow-hidden relative font-sans">
-      <div className="max-w-[1400px] mx-auto">
+    <section className="py-24 px-[5%] bg-[#1A1A1A] text-white overflow-hidden relative font-sans">
+      {/* Background Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+           style={{ backgroundImage: 'radial-gradient(#F9F7E8 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+      />
+
+      <div className="max-w-[1400px] mx-auto relative z-10">
         
         {/* Header Section */}
         <div className="text-center mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6"
+            className="inline-flex items-center justify-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-black/40"
           >
+            <Sparkles size={12} className="text-[#FFC62A]" />
+            <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-white/60">
+              The TAC Suite Online
+            </span>
+          </motion.div>
+
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Marketing <br />
-            <span className="font-serif italic font-light text-[#FFC62A] glow-yellow">Ecosystem</span>
-          </motion.h2>
-          <p className="mt-8 max-w-2xl mx-auto text-white/40 text-lg md:text-xl font-medium leading-relaxed">
-            Moving beyond disconnected campaigns to a unified, AI-driven engine built for 2026 performance standards.
+            <span className="font-serif italic font-medium text-[#FFC62A]">Ecosystem</span>
+          </h2>
+          <p className="max-w-xl mx-auto text-white/40 text-base md:text-lg font-medium leading-relaxed">
+            A unified, AI-driven engine built to transform your digital presence into a high-performance growth machine.
           </p>
         </div>
 
         {/* Interactive Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_500px] gap-8 items-stretch">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_480px] gap-8 items-stretch">
           
           {/* Strategic Insights Card */}
           <div className="relative">
@@ -108,63 +121,44 @@ export default function MarketingGrowthEngine() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                className="bg-[#1A1A1A] rounded-[48px] p-8 md:p-16 h-full flex flex-col justify-between border border-white/5 relative overflow-hidden shadow-2xl"
+                transition={{ duration: 0.4 }}
+                className="bg-black/40 rounded-[48px] p-8 md:p-14 h-full flex flex-col justify-between border border-white/5 backdrop-blur-xl relative overflow-hidden shadow-2xl"
               >
-                {/* Visual Accent */}
-                <div className="absolute -top-10 -right-10 opacity-[0.03] scale-[5] pointer-events-none rotate-12 text-white">
-                  {activeTab.icon}
-                </div>
-
                 <div className="relative z-10">
                   <div className="flex items-center gap-6 mb-12">
-                    <div className="w-16 h-16 rounded-2xl bg-[#FFC62A] text-black flex items-center justify-center shadow-[0_0_30px_rgba(255,198,42,0.2)]">
+                    <div className="w-16 h-16 rounded-2xl bg-[#365C47] text-white flex items-center justify-center shadow-lg shadow-[#365C47]/20">
                       {activeTab.icon}
                     </div>
                     <div>
-                      <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#FFC62A] mb-1 block">Strategy Module</span>
-                      <h3 className="text-3xl font-black tracking-tighter text-white">{activeTab.title}</h3>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#365C47] mb-1 block">Module Strategy</span>
+                      <h3 className="text-3xl font-bold tracking-tight">{activeTab.title}</h3>
                     </div>
                   </div>
 
-                  <p className="text-2xl md:text-4xl font-black leading-tight tracking-tighter text-white mb-10 max-w-3xl">
+                  <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight mb-10 text-[#F9F7E8]">
                     "{activeTab.summary}"
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                     {activeTab.features.map((feature, i) => (
-                      <motion.div 
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-start gap-3"
-                      >
+                      <div key={i} className="flex items-start gap-3">
                         <div className="mt-1 text-[#FFC62A]"><CheckCircle2 size={18} /></div>
-                        <span className="text-lg font-bold text-white/60 tracking-tight">{feature}</span>
-                      </motion.div>
+                        <span className="text-base font-bold text-white/50">{feature}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="relative z-10 pt-10 border-t border-white/5 flex flex-wrap items-center justify-between gap-8">
+                <div className="relative z-10 pt-10 border-t border-white/10 flex flex-wrap items-center justify-between gap-8">
                   <div className="flex gap-10">
                     <div>
-                      <p className="text-[10px] font-black uppercase text-white/20 tracking-widest mb-2">{activeTab.metrics.label}</p>
-                      <p className="text-4xl font-black text-white">{activeTab.metrics.value}</p>
-                    </div>
-                    <div className="hidden sm:block">
-                      <p className="text-[10px] font-black uppercase text-white/20 tracking-widest mb-2">Priority Level</p>
-                      <div className="flex gap-1 mt-3">
-                        {[1, 2, 3, 4, 5].map((s) => (
-                          <div key={s} className={`h-1.5 w-6 rounded-full ${s <= 4 ? 'bg-[#FFC62A]' : 'bg-white/5'}`} />
-                        ))}
-                      </div>
+                      <p className="text-[10px] font-bold uppercase text-white/20 tracking-widest mb-2">{activeTab.metrics.label}</p>
+                      <p className="text-4xl font-bold text-[#FFC62A]">{activeTab.metrics.value}</p>
                     </div>
                   </div>
                   
-                  <button className="bg-white text-black px-8 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl flex items-center gap-3 group transition-all hover:bg-[#FFC62A]">
-                    Deploy Strategy <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <button className="bg-[#365C47] text-white px-10 py-5 rounded-2xl font-bold uppercase text-[10px] tracking-[0.2em] shadow-xl hover:bg-[#FFC62A] hover:text-black transition-all flex items-center gap-3 group">
+                    Enroll in Module <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </button>
                 </div>
               </motion.div>
@@ -177,64 +171,49 @@ export default function MarketingGrowthEngine() {
               <button
                 key={pillar.id}
                 onClick={() => setActiveTab(pillar)}
-                className={`group relative p-8 rounded-[32px] text-left transition-all duration-500 flex items-center justify-between border-2
+                className={`group relative p-6 rounded-[32px] text-left transition-all duration-300 flex items-center justify-between border-2
                   ${activeTab.id === pillar.id 
-                    ? "bg-[#FFC62A] border-[#FFC62A] text-black shadow-[0_0_40px_rgba(255,198,42,0.1)]" 
-                    : "bg-[#1A1A1A] border-white/5 text-white/40 hover:border-white/10 hover:text-white"
+                    ? "bg-[#FFC62A] border-[#FFC62A] text-black shadow-lg shadow-[#FFC62A]/10" 
+                    : "bg-black/40 border-white/5 text-white/40 hover:bg-black/60 hover:text-white"
                   }`}
               >
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors
-                    ${activeTab.id === pillar.id ? "bg-black text-[#FFC62A]" : "bg-white/5 text-white/20 group-hover:bg-white/10"}
+                    ${activeTab.id === pillar.id ? "bg-black text-[#FFC62A]" : "bg-white/5 text-white/20"}
                   `}>
                     {pillar.icon}
                   </div>
                   <div>
-                    <h4 className="font-black tracking-tighter text-lg leading-none mb-1">{pillar.title}</h4>
-                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-50">View Analytics</span>
+                    <h4 className="font-bold text-lg leading-none mb-1">{pillar.title}</h4>
+                    <span className={`text-[9px] font-bold uppercase tracking-widest ${activeTab.id === pillar.id ? "text-black/60" : "text-white/20"}`}>Module Details</span>
                   </div>
                 </div>
                 
-                <div className={`transition-transform duration-500 ${activeTab.id === pillar.id ? 'rotate-45' : 'group-hover:translate-x-2'}`}>
-                  <TrendingUp size={20} className={activeTab.id === pillar.id ? "text-black" : "text-white/10"} />
-                </div>
-
-                {activeTab.id === pillar.id && (
-                  <motion.div 
-                    layoutId="pillarHighlight"
-                    className="absolute -left-[2px] top-1/4 bottom-1/4 w-[4px] bg-black rounded-full"
-                  />
-                )}
+                <TrendingUp size={18} className={`transition-all ${activeTab.id === pillar.id ? "text-black" : "text-white/20"}`} />
               </button>
             ))}
 
-            {/* System Status Widget */}
-            <div className="mt-auto bg-[#1A1A1A] border border-white/5 rounded-[32px] p-8 text-white relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#365c47]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <Zap className="absolute -bottom-4 -right-4 text-[#FFC62A]/5 scale-[4]" />
+            {/* System Intelligence Widget */}
+            <div className="mt-auto bg-black/40 border border-white/5 rounded-[32px] p-8 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FFC62A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Zap className="absolute -bottom-4 -right-4 text-[#FFC62A]/10 scale-[4]" />
               
-              <h5 className="text-[11px] font-black uppercase tracking-widest mb-4 flex items-center gap-2 relative z-10">
+              <h5 className="text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2 relative z-10 text-white/80">
                 <div className="w-2 h-2 rounded-full bg-[#FFC62A] animate-pulse shadow-[0_0_10px_#FFC62A]" />
-                System Intelligence
+                Live Node Analysis
               </h5>
-              <p className="text-white/40 font-medium leading-relaxed mb-6 relative z-10">
-                Predictive models are currently processing <span className="text-white">14.2M intent signals</span> per second. 
+              <p className="text-white/40 text-sm font-medium leading-relaxed mb-6 relative z-10">
+                The TAC online suite maps <span className="text-[#FFC62A] font-bold">14.2M growth signals</span> to ensure our curriculum stays ahead of 2026 standards.
               </p>
               
               <div className="flex items-center gap-3 bg-white/5 self-start px-4 py-2 rounded-xl border border-white/5 relative z-10">
                 <div className="text-[#FFC62A]"><TrendingUp size={14} /></div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">Node: Global-2026</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">Node: Online-Suite</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .glow-yellow {
-          text-shadow: 0 0 25px rgba(255, 198, 42, 0.3);
-        }
-      `}</style>
     </section>
   );
 }

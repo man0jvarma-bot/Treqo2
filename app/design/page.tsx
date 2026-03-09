@@ -11,6 +11,7 @@ import TacSmallFooter from "@/components/design/footer";
 //import Curriculum from "@/components/design/Curriculum";
 import TacAdvantage from "@/components/design/Careers";
 
+
 export default function DesignPage() {
   return (
     <>

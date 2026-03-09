@@ -10,54 +10,22 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-/* ================= CASE DATA ================= */
+/* ================= EXPANDED CASE DATA ================= */
 
 const CASES = [
-  {
-    name: "Utkarsh Gupta",
-    role: "Founder, Comet",
-    problem: "Scale operations on Ajio & Myntra while preserving Comet’s premium brand identity.",
-    brand: "COMET",
-    image: "/images/home-page.jpg",
-  },
-  {
-    name: "Anil Goteti",
-    role: "Founder, Scapia",
-    problem: "Boost engagement, strengthen loyalty, and build a memorable travel-rewards brand.",
-    brand: "SCAPIA",
-    image: "/images/home-page.jpg",
-  },
-  {
-    name: "Vibha Harish",
-    role: "Founder, Cosmix Wellness",
-    problem: "Increase TOFU awareness and virality through organic channels.",
-    brand: "COSMIX",
-    image: "/images/home-page.jpg",
-  },
-  {
-    name: "Shamika Haldipurkar",
-    role: "Founder, d’you",
-    problem: "Launch product portfolio across quick-commerce platforms.",
-    brand: "D’YOU",
-    image: "/images/home-page.jpg",
-  },
-  {
-    name: "Varun Khaitan",
-    role: "Co-Founder, Urban Company",
-    problem: "Improve NPS of Cleaning vertical crossing ₹80Cr ARR.",
-    brand: "URBAN COMPANY",
-    image: "/images/home-page.jpg",
-  },
-  {
-    name: "Neha Agarwal",
-    role: "Founder, Nua",
-    problem: "Strengthen customer retention and improve LTV.",
-    brand: "NUA",
-    image: "/images/home-page.jpg",
-  },
+  { name: "Utkarsh Gupta", role: "Founder, Comet", problem: "Scale operations on Ajio & Myntra while preserving brand identity.", brand: "COMET", image: "/images/home-page.jpg" },
+  { name: "Anil Goteti", role: "Founder, Scapia", problem: "Boost engagement, strengthen loyalty, and build a travel-rewards brand.", brand: "SCAPIA", image: "/images/home-page.jpg" },
+  { name: "Vibha Harish", role: "Founder, Cosmix", problem: "Increase TOFU awareness and virality through organic channels.", brand: "COSMIX", image: "/images/home-page.jpg" },
+  { name: "Shamika Haldipurkar", role: "Founder, d’you", problem: "Launch product portfolio across quick-commerce platforms.", brand: "D’YOU", image: "/images/home-page.jpg" },
+  { name: "Varun Khaitan", role: "Co-Founder, Urban Co", problem: "Improve NPS of Cleaning vertical crossing ₹80Cr ARR.", brand: "URBAN COMPANY", image: "/images/home-page.jpg" },
+  { name: "Neha Agarwal", role: "Founder, Nua", problem: "Strengthen customer retention and improve LTV.", brand: "NUA", image: "/images/home-page.jpg" },
+  { name: "Deepak V.", role: "Founder, Bare", problem: "Optimize supply chain for D2C scaling while maintaining margins.", brand: "BARE ANATOMY", image: "/images/home-page.jpg" },
+  { name: "Rishabh P.", role: "Founder, Mensa", problem: "Acquisition strategy and brand integration for global markets.", brand: "MENSA", image: "/images/home-page.jpg" },
+  { name: "Aditi S.", role: "Founder, Heads up", problem: "Omnichannel expansion and customer journey mapping.", brand: "HEADS UP", image: "/images/home-page.jpg" },
+  { name: "Rahul M.", role: "Founder, Wakefit", problem: "Performance marketing scaling for high-ticket home categories.", brand: "WAKEFIT", image: "/images/home-page.jpg" },
+  { name: "Pooja D.", role: "Founder, MyGlamm", problem: "Conversion rate optimization for content-to-commerce funnels.", brand: "MYGLAMM", image: "/images/home-page.jpg" },
+  { name: "Sahil B.", role: "Founder, Zivame", problem: "Retargeting frameworks and lifecycle marketing strategy.", brand: "ZIVAME", image: "/images/home-page.jpg" },
 ];
-
-/* ================= SLIDES LOGIC (RETAINED) ================= */
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
   const chunks = [];
@@ -67,71 +35,72 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   return chunks;
 }
 
+// Grouping into sets of 4 for a 2x2 grid per slide
 const SLIDES = chunkArray(CASES, 4);
-
-/* ================= SECTION ================= */
 
 export default function CaseStudiesSection() {
   return (
-    <section className="relative bg-[#1D1D1D] text-[#FBF8E4] py-28 overflow-hidden">
-
-      {/* Brand Pattern Background */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(-12deg, rgba(255,198,42,0.25) 0px, rgba(255,198,42,0.25) 1px, transparent 1px, transparent 14px)",
-        }}
+    <section className="relative bg-[#1A1A1A] text-[#F9F7E8] py-28 overflow-hidden font-sans">
+      
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.05]"
+        style={{ backgroundImage: "repeating-linear-gradient(-12deg, #365C47 0px, #365C47 1px, transparent 1px, transparent 14px)" }}
       />
 
-      {/* Gold Glow */}
-      <div className="absolute -top-40 left-1/4 w-[520px] h-[520px] bg-[#FFC62A]/15 blur-[160px] pointer-events-none" />
-
-      {/* 5% Padding */}
       <div className="relative w-full px-[5%]">
-        <div className="grid grid-cols-1 lg:grid-cols-[380px_2fr] gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-12 items-start">
 
-          {/* LEFT CONTENT */}
-          <div>
-            <h2 className="text-5xl lg:text-7xl font-black leading-[1.05] mb-8 tracking-tighter">
-              Real Case Studies
-              <br />
+          {/* LEFT HEADER */}
+          <div className="lg:sticky lg:top-28">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black border border-white/10 mb-8">
+              <Sparkles className="w-3 h-3 text-[#FFC62A]" />
+              <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-white/40">TAC Suite Online</span>
+            </div>
+
+            <h2 className="text-5xl lg:text-7xl font-bold leading-none mb-8 tracking-tighter text-white">
+              Real Case <br />
               <span className="italic font-serif text-[#FFC62A] relative">
-                Done by Founders
-                <svg className="absolute -bottom-2 left-0 w-full h-2 text-[#FFC62A]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                Studies
+                <svg className="absolute -bottom-2 left-0 w-full h-2 text-[#365C47]/40" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                 </svg>
               </span>
             </h2>
 
-            <p className="text-[#FBF8E4]/60 text-lg leading-relaxed mb-8">
-              Real businesses. Real founders. Real growth challenges solved
-              inside the TAC ecosystem.
+            <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-sm">
+              Real founders solving real growth challenges. Explore the execution proof behind the TAC Suite.
             </p>
 
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-3 rounded-full bg-[#FFC62A] text-[#1D1D1D] px-8 py-4 text-xs font-black tracking-widest hover:bg-white hover:scale-105 transition-all"
-            >
-              EXPLORE MORE
-              <ArrowRight className="w-4 h-4" />
+            <Link href="/case-studies" className="inline-flex items-center gap-4 rounded-2xl bg-[#365C47] text-white px-8 py-5 text-xs font-bold tracking-widest hover:bg-[#FFC62A] hover:text-black transition-all shadow-xl shadow-[#365C47]/20">
+              EXPLORE MORE <ArrowRight className="w-4 h-4" />
             </Link>
+
+            {/* NAVIGATION BUTTONS */}
+            <div className="flex gap-4 mt-12">
+              <button className="case-prev-btn w-14 h-14 rounded-2xl bg-black border border-white/10 text-white flex items-center justify-center hover:bg-[#FFC62A] hover:text-black transition-all cursor-pointer z-20">
+                <ChevronLeft size={24} />
+              </button>
+              <button className="case-next-btn w-14 h-14 rounded-2xl bg-black border border-white/10 text-white flex items-center justify-center hover:bg-[#FFC62A] hover:text-black transition-all cursor-pointer z-20">
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
 
-          {/* RIGHT SLIDER (FUNCTIONALITY RETAINED) */}
-          <div className="relative w-full overflow-hidden">
+          {/* RIGHT SLIDER */}
+          <div className="relative w-full min-w-0">
             <Swiper
               modules={[Navigation]}
               slidesPerView={1}
-              spaceBetween={40}
+              spaceBetween={30}
               navigation={{
-                nextEl: ".next-btn",
-                prevEl: ".prev-btn",
+                nextEl: ".case-next-btn",
+                prevEl: ".case-prev-btn",
               }}
+              className="overflow-visible"
             >
               {SLIDES.map((group, index) => (
                 <SwiperSlide key={index}>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4">
                     {group.map((item, i) => (
                       <CaseCard key={i} {...item} />
                     ))}
@@ -139,16 +108,6 @@ export default function CaseStudiesSection() {
                 </SwiperSlide>
               ))}
             </Swiper>
-
-            {/* NAVIGATION STYLE UPDATED */}
-            <div className="flex justify-end gap-4 mt-10">
-              <button className="prev-btn w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-[#FFC62A] hover:text-[#1D1D1D] transition-all">
-                <ChevronLeft />
-              </button>
-              <button className="next-btn w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-[#FFC62A] hover:text-[#1D1D1D] transition-all">
-                <ChevronRight />
-              </button>
-            </div>
           </div>
 
         </div>
@@ -157,53 +116,25 @@ export default function CaseStudiesSection() {
   );
 }
 
-/* ================= COMPONENT CARD ================= */
-
-interface CaseCardProps {
-  name: string;
-  role: string;
-  problem: string;
-  brand: string;
-  image: string;
-}
-
-function CaseCard({
-  name,
-  role,
-  problem,
-  brand,
-  image,
-}: CaseCardProps) {
+function CaseCard({ name, role, problem, brand, image }: any) {
   return (
-    <div className="relative h-[320px] rounded-[32px] overflow-hidden bg-white/[0.03] border border-white/10 shadow-2xl flex group transition-all duration-500 hover:border-[#FFC62A]/30">
-
-      <div className="w-[62%] p-8 flex flex-col justify-between z-10">
+    <div className="relative h-[320px] rounded-[32px] overflow-hidden bg-black/40 backdrop-blur-md border border-white/5 flex group transition-all duration-500 hover:border-[#365C47]/50">
+      <div className="w-[65%] p-8 flex flex-col justify-between z-10">
         <div>
-          <p className="text-xl font-black text-[#FBF8E4] tracking-tight">{name}</p>
-          <p className="text-[#FFC62A] text-[10px] font-bold uppercase tracking-widest mb-6">{role}</p>
-
-          <p className="text-[10px] uppercase font-black text-white/30 tracking-widest mb-3">
-            Problem Statement
-          </p>
-
-          <p className="text-sm text-[#FBF8E4]/60 leading-relaxed line-clamp-4">
-            {problem}
-          </p>
+          <p className="text-xl font-bold text-white tracking-tight mb-1">{name}</p>
+          <p className="text-[#365C47] text-[9px] font-bold uppercase tracking-widest mb-6">{role}</p>
+          <p className="text-[9px] uppercase font-bold text-[#FFC62A] tracking-[0.2em] mb-3">The Challenge</p>
+          <p className="text-sm text-gray-500 leading-relaxed line-clamp-4 font-medium">{problem}</p>
         </div>
-
-        <p className="text-[#FFC62A] font-black italic font-serif text-lg">
-          {brand}
-        </p>
+        <p className="text-white font-bold italic font-serif text-2xl opacity-60 group-hover:text-[#FFC62A] transition-colors">{brand}</p>
       </div>
-
-      <div className="relative w-[38%] h-full">
-        <Image src={image} alt={name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#1D1D1D]/90 to-[#1D1D1D]" />
+      <div className="relative w-[35%] h-full shrink-0">
+        <Image src={image} alt={name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-30 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#1A1A1A]/95 to-[#1A1A1A]" />
       </div>
     </div>
   );
 }
-
 // "use client";
 
 // import Image from "next/image";

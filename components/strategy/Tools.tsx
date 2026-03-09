@@ -59,7 +59,7 @@ const tools = [
   {
     name: "AI Strategy",
     icon: <Cpu size={16} />,
-    color: "#365c47",
+    color: "#FFC62A",
     id: "07",
     description: "Automation and AI-assisted workflows."
   }
@@ -69,8 +69,14 @@ export default function TechStackDashboard() {
   const loop = [...tools, ...tools, ...tools, ...tools];
 
   return (
-    <section className="py-20 px-[5%] bg-[#F9F7E8] text-[#1D1D1D] overflow-hidden relative">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-[5%] bg-[#1A1A1A] text-white overflow-hidden relative border-y border-white/5 font-sans">
+      
+      {/* Background Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+           style={{ backgroundImage: 'radial-gradient(#F9F7E8 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Header Section */}
         <div className="text-center mb-14">
@@ -78,27 +84,28 @@ export default function TechStackDashboard() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center justify-center gap-2 mb-5 px-4 py-1.5 rounded-full border border-[#365c47]/10 bg-[#365c47]/5"
+            className="inline-flex items-center justify-center gap-2 mb-5 px-4 py-1.5 rounded-full border border-white/10 bg-black/40"
           >
-            <Sparkles size={12} className="text-[#365c47]" />
-            <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#365c47]">
+            <Sparkles size={12} className="text-[#FFC62A]" />
+            <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-white/40">
               The TAC Suite Tools
             </span>
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            The Execution <span className="italic font-serif text-[#365c47]">Stack.</span>
+            The Execution <span className="italic font-serif text-[#FFC62A]">Stack.</span>
           </h2>
 
-          <p className="max-w-xl mx-auto text-gray-500 text-sm md:text-base font-medium leading-relaxed">
+          <p className="max-w-xl mx-auto text-white/40 text-sm md:text-base font-medium leading-relaxed">
             Master the production-grade tools used by elite creative teams and global marketing agencies.
           </p>
         </div>
 
         {/* Smaller Infinite Tool Stream */}
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F9F7E8] to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F9F7E8] to-transparent z-10" />
+          {/* Edge Fades to blend with Dark Theme */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#1A1A1A] to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#1A1A1A] to-transparent z-10" />
 
           <div className="flex overflow-hidden py-4">
             <motion.div
@@ -110,32 +117,32 @@ export default function TechStackDashboard() {
                 <motion.div
                   key={i}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="group flex flex-col justify-between bg-white rounded-[1.5rem] px-6 py-6 min-w-[240px] border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(54,92,71,0.08)]"
+                  className="group flex flex-col justify-between bg-black/40 backdrop-blur-xl rounded-[1.5rem] px-6 py-6 min-w-[240px] border border-white/5 shadow-2xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(54,92,71,0.08)] hover:border-[#365C47]/50"
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <div
-                      className="w-10 h-10 rounded-xl bg-[#F9F7E8] flex items-center justify-center border border-black/5 shrink-0"
+                      className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 shrink-0"
                       style={{ color: tool.color }}
                     >
                       {tool.icon}
                     </div>
 
                     <div>
-                      <span className="text-[8px] font-bold uppercase tracking-widest text-[#365c47]/40 block leading-none mb-1">
+                      <span className="text-[8px] font-bold uppercase tracking-widest text-white/20 block leading-none mb-1">
                         Node {tool.id}
                       </span>
-                      <h3 className="text-sm font-bold tracking-tight text-[#1D1D1D]">
+                      <h3 className="text-sm font-bold tracking-tight text-[#F9F7E8]">
                         {tool.name}
                       </h3>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-[12px] text-gray-500 font-medium leading-snug">
+                    <p className="text-[12px] text-white/40 font-medium leading-snug">
                       {tool.description}
                     </p>
 
-                    <div className="flex items-center gap-1.5 mt-4 text-[#365c47] text-[9px] font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                    <div className="flex items-center gap-1.5 mt-4 text-[#FFC62A] text-[9px] font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
                       <span>Curriculum</span>
                       <ArrowRight size={12} />
                     </div>
@@ -148,7 +155,7 @@ export default function TechStackDashboard() {
 
         {/* Bottom context */}
         <div className="mt-12 text-center">
-          <p className="text-gray-400 text-[11px] font-medium italic">
+          <p className="text-white/20 text-[11px] font-medium italic">
             * Agency-standard workflows for the TAC Suite Online.
           </p>
         </div>
