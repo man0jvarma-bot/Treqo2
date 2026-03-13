@@ -1,146 +1,381 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Sparkles, 
-  Layers, 
-  Command, 
-  Framer, 
-  ArrowRight, 
-  Fingerprint, 
-  Globe 
+import {
+  Sparkles,
+  Command,
+  ArrowRight,
+  Fingerprint,
+  Globe,
+  TrendingUp,
+  BarChart3,
+  Zap,
+  Target,
+  Users,
 } from "lucide-react";
 
 export default function KineticMosaic() {
   const containerRef = useRef(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <section ref={containerRef} className="py-20 px-[5%] bg-[#FFF9E6] text-[#111111] overflow-hidden">
-      <div className="max-w-[1300px] mx-auto">
-        
-        {/* REFINED HEADER */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-end gap-10 mb-16">
+    <section
+      ref={containerRef}
+      style={{
+        background: '#F7F5FF',
+        padding: '100px 0',
+        overflow: 'hidden',
+        position: 'relative',
+        fontFamily: "'DM Sans', 'Segoe UI', system-ui, sans-serif",
+      }}
+    >
+      {/* Straight grid lines */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: `
+          repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(124,58,237,0.05) 59px, rgba(124,58,237,0.05) 60px),
+          repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(124,58,237,0.025) 59px, rgba(124,58,237,0.025) 60px)
+        `,
+      }} />
+
+      {/* Glow blobs */}
+      <div style={{ position: 'absolute', top: '-180px', right: '-100px', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-100px', left: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
+
+      <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%', position: 'relative', zIndex: 10 }}>
+
+        {/* HEADER */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'flex-end', gap: '40px', marginBottom: '48px' }}>
           <div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-3 mb-4"
+              style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}
             >
-              <div className="w-8 h-[1px] bg-[#365c47]/30" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#365c47]">Creative Intelligence</span>
+              <div style={{ width: '32px', height: '1px', background: 'rgba(124,58,237,0.4)' }} />
+              <span style={{ fontSize: '9px', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.3em' }}>Creative Intelligence</span>
             </motion.div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-[0.9] uppercase">
-              The Art <br />
-              <span className="font-serif italic font-light text-[#365c47] lowercase">of Impact</span>
+            <h2 style={{ margin: 0, lineHeight: 0.88, letterSpacing: '-0.03em' }}>
+              <span style={{ display: 'block', fontSize: 'clamp(36px, 4.5vw, 60px)', fontWeight: 900, color: '#0D0D1A', textTransform: 'uppercase' }}>The Art</span>
+              <span style={{ display: 'block', fontSize: 'clamp(36px, 4.5vw, 60px)', fontWeight: 300, color: '#7C3AED', fontStyle: 'italic', fontFamily: 'Georgia, serif', textTransform: 'lowercase' }}>of Impact</span>
             </h2>
           </div>
-          <div className="lg:pl-16">
-            <p className="text-lg md:text-xl font-medium text-black/50 leading-relaxed max-w-md">
-              We design digital systems that bridge the gap between <span className="text-black">pure aesthetics</span> and <span className="text-black">raw performance</span>.
+          <div style={{ paddingLeft: '32px' }}>
+            <p style={{ fontSize: '16px', fontWeight: 500, color: '#64748b', lineHeight: 1.7, maxWidth: '380px', margin: 0 }}>
+              We design digital systems that bridge the gap between{' '}
+              <span style={{ color: '#0D0D1A', fontWeight: 700 }}>pure aesthetics</span> and{' '}
+              <span style={{ color: '#0D0D1A', fontWeight: 700 }}>raw performance</span>.
             </p>
           </div>
         </div>
 
-        {/* THE KINETIC GRID - Sized for Decency */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-          
-          {/* CARD 1: IDENTITY */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="md:col-span-4 bg-white rounded-[32px] p-8 flex flex-col justify-between border border-black/5 shadow-sm group relative overflow-hidden h-[400px]"
+        {/* BENTO GRID */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '16px' }}>
+
+          {/* CARD 1 — Identity Systems, tall */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            onMouseEnter={() => setHoveredCard(1)}
+            onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              gridColumn: '1 / 5',
+              gridRow: '1 / 3',
+              background: hoveredCard === 1 ? '#7C3AED' : 'white',
+              borderRadius: '32px',
+              padding: '36px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              border: `1.5px solid ${hoveredCard === 1 ? '#7C3AED' : '#ede9fe'}`,
+              boxShadow: hoveredCard === 1 ? '0 24px 60px rgba(124,58,237,0.25)' : '0 2px 16px rgba(124,58,237,0.06)',
+              transition: 'all 0.4s ease',
+              cursor: 'default',
+              position: 'relative',
+              overflow: 'hidden',
+              minHeight: '380px',
+            }}
           >
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFF9E6] flex items-center justify-center mb-6">
-                <Fingerprint size={24} className="text-[#365c47]" />
+            {/* Dot pattern */}
+            <div style={{
+              position: 'absolute', inset: 0, opacity: hoveredCard === 1 ? 0.06 : 0.03,
+              backgroundImage: 'radial-gradient(#7C3AED 1px, transparent 1px)',
+              backgroundSize: '18px 18px', pointerEvents: 'none', transition: 'opacity 0.4s',
+            }} />
+
+            {/* Corner glow */}
+            <div style={{
+              position: 'absolute', top: '-60px', right: '-60px',
+              width: '200px', height: '200px', borderRadius: '50%',
+              background: `radial-gradient(circle, ${hoveredCard === 1 ? 'rgba(255,255,255,0.15)' : 'rgba(124,58,237,0.08)'} 0%, transparent 70%)`,
+              pointerEvents: 'none', transition: 'all 0.4s',
+            }} />
+
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{
+                width: '48px', height: '48px', borderRadius: '14px',
+                background: hoveredCard === 1 ? 'rgba(255,255,255,0.2)' : '#EDE9FE',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '24px', transition: 'all 0.3s',
+              }}>
+                <Fingerprint size={22} color={hoveredCard === 1 ? 'white' : '#7C3AED'} />
               </div>
-              <h3 className="text-2xl font-black uppercase tracking-tight leading-none mb-3">Identity <br /> Systems</h3>
-              <p className="text-sm text-black/40 font-semibold leading-snug">Visual languages built for market leadership and long-term equity.</p>
+              <div style={{ fontSize: '9px', fontWeight: 800, color: hoveredCard === 1 ? 'rgba(255,255,255,0.5)' : '#C4B5FD', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>Module 01</div>
+              <h3 style={{ margin: '0 0 12px', fontSize: '26px', fontWeight: 900, color: hoveredCard === 1 ? 'white' : '#0D0D1A', lineHeight: 1.05, letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
+                Identity<br />Systems
+              </h3>
+              <p style={{ margin: '0 0 24px', fontSize: '13px', color: hoveredCard === 1 ? 'rgba(255,255,255,0.65)' : '#64748b', fontWeight: 500, lineHeight: 1.65, transition: 'color 0.4s' }}>
+                Visual languages built for market leadership and long-term brand equity.
+              </p>
+              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {['Brand identity kits', 'Typography systems', 'Visual positioning', 'Style guide creation'].map(t => (
+                  <li key={t} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: hoveredCard === 1 ? 'rgba(255,255,255,0.7)' : '#64748b', fontWeight: 500 }}>
+                    <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: hoveredCard === 1 ? 'rgba(255,255,255,0.5)' : '#A78BFA', flexShrink: 0 }} />{t}
+                  </li>
+                ))}
+              </ul>
             </div>
-            
-            <div className="mt-8 transition-transform duration-500 group-hover:translate-x-2">
-               <div className="w-12 h-12 rounded-full bg-[#FFC62A] flex items-center justify-center shadow-lg shadow-[#FFC62A]/20">
-                 <ArrowRight size={20} />
-               </div>
+
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{
+                width: '44px', height: '44px', borderRadius: '50%',
+                background: hoveredCard === 1 ? 'rgba(255,255,255,0.2)' : '#7C3AED',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'all 0.3s',
+                transform: hoveredCard === 1 ? 'translateX(4px)' : 'none',
+              }}>
+                <ArrowRight size={18} color="white" />
+              </div>
             </div>
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
           </motion.div>
 
-          {/* RIGHT SIDE NESTED GRID */}
-          <div className="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-5">
-            
-            {/* SUB-CARD: MOTION */}
-            <motion.div 
-              whileHover={{ scale: 0.98 }}
-              className="bg-black rounded-[32px] p-8 text-white flex flex-col justify-between overflow-hidden relative h-[190px]"
-            >
-              <div className="relative z-10">
-                <span className="text-[8px] font-black tracking-widest text-[#FFC62A] uppercase opacity-80">Module 01</span>
-                <h4 className="text-xl font-black uppercase mt-1 tracking-tight">Motion UI Lab</h4>
-              </div>
-              <Framer size={60} className="absolute -bottom-4 -right-4 text-white/10 rotate-12" />
-              <p className="relative z-10 text-white/40 text-[13px] font-medium max-w-[200px]">Physics-based interfaces that feel alive.</p>
-            </motion.div>
+          {/* CARD 2 — Performance Marketing */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            onMouseEnter={() => setHoveredCard(2)}
+            onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              gridColumn: '5 / 9',
+              background: '#0D0D1A',
+              borderRadius: '32px',
+              padding: '32px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              overflow: 'hidden',
+              position: 'relative',
+              minHeight: '180px',
+              transition: 'transform 0.3s ease',
+              transform: hoveredCard === 2 ? 'scale(0.98)' : 'scale(1)',
+              cursor: 'default',
+            }}
+          >
+            <div style={{ position: 'absolute', bottom: '-20px', right: '-20px', opacity: 0.07 }}>
+              <TrendingUp size={100} color="white" />
+            </div>
+            <div style={{ position: 'absolute', top: '-40px', left: '-40px', width: '150px', height: '150px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.4) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <span style={{ fontSize: '8px', fontWeight: 800, color: '#A78BFA', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Module 02</span>
+              <h4 style={{ margin: '6px 0 0', fontSize: '20px', fontWeight: 900, color: 'white', textTransform: 'uppercase', letterSpacing: '-0.02em' }}>Performance<br />Marketing</h4>
+            </div>
+            <p style={{ position: 'relative', zIndex: 1, margin: 0, fontSize: '12px', color: 'rgba(255,255,255,0.45)', fontWeight: 500, lineHeight: 1.6 }}>
+              Data-driven campaigns built to convert at every stage of the funnel.
+            </p>
+          </motion.div>
 
-            {/* SUB-CARD: STRATEGY */}
-            <motion.div 
-              whileHover={{ scale: 0.98 }}
-              className="bg-[#365c47] rounded-[32px] p-8 text-white flex flex-col justify-between h-[190px]"
-            >
-              <div className="flex justify-between items-start">
-                <Globe size={24} className="text-[#FFC62A]" />
-                <div className="px-2 py-1 bg-white/10 rounded text-[8px] font-black uppercase tracking-widest">Live</div>
+          {/* CARD 3 — Global GTM */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            onMouseEnter={() => setHoveredCard(3)}
+            onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              gridColumn: '9 / 13',
+              background: 'linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)',
+              borderRadius: '32px',
+              padding: '32px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              minHeight: '180px',
+              transition: 'transform 0.3s ease',
+              transform: hoveredCard === 3 ? 'scale(0.98)' : 'scale(1)',
+              cursor: 'default',
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+            <div style={{ position: 'absolute', bottom: '-30px', right: '-30px', width: '130px', height: '130px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', pointerEvents: 'none' }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <Globe size={22} color="rgba(255,255,255,0.8)" />
+              <div style={{ padding: '3px 10px', background: 'rgba(255,255,255,0.15)', borderRadius: '999px', fontSize: '8px', fontWeight: 800, color: 'rgba(255,255,255,0.9)', textTransform: 'uppercase', letterSpacing: '0.15em', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#4ADE80', boxShadow: '0 0 6px #4ADE80' }} />
+                Live
               </div>
-              <div>
-                <h4 className="text-xl font-black uppercase tracking-tight">Global GTM</h4>
-                <p className="text-white/40 text-[13px] mt-1">Scaling across borders with intent.</p>
+            </div>
+            <div>
+              <h4 style={{ margin: '0 0 4px', fontSize: '20px', fontWeight: 900, color: 'white', textTransform: 'uppercase', letterSpacing: '-0.02em' }}>Global GTM</h4>
+              <p style={{ margin: 0, fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: 500, lineHeight: 1.6 }}>Scaling brands across borders with precision.</p>
+            </div>
+          </motion.div>
+
+          {/* CARD 4 — Full Stack Creative */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
+            onMouseEnter={() => setHoveredCard(4)}
+            onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              gridColumn: '5 / 10',
+              background: '#EDE9FE',
+              borderRadius: '32px',
+              padding: '32px 36px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '32px',
+              position: 'relative',
+              overflow: 'hidden',
+              minHeight: '180px',
+              transition: 'transform 0.3s ease',
+              transform: hoveredCard === 4 ? 'translateY(-4px)' : 'translateY(0)',
+              cursor: 'default',
+            }}
+          >
+            <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '200px', height: '200px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+              <h3 style={{ margin: '0 0 14px', fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 900, color: '#3B0764', letterSpacing: '-0.03em', lineHeight: 0.95, textTransform: 'uppercase' }}>
+                Full Stack<br />Creative
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {['Design', 'Code', 'Data', 'Strategy'].map(tag => (
+                  <span key={tag} style={{
+                    padding: '4px 12px',
+                    background: '#7C3AED', color: 'white',
+                    borderRadius: '8px', fontSize: '9px',
+                    fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em',
+                  }}>{tag}</span>
+                ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* THE "MAIN STAGE" CARD */}
-            <motion.div 
-              className="md:col-span-2 bg-[#FFC62A] rounded-[40px] p-10 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group shadow-xl shadow-[#FFC62A]/10 h-auto md:h-[190px]"
-            >
-               <div className="flex-1 relative z-10">
-                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-[0.8] mb-4">
-                    Full Stack <br /> Creative
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Design', 'Code', 'Data'].map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-black text-white rounded-lg text-[9px] font-black uppercase tracking-widest">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-               </div>
+            <div style={{
+              width: '88px', height: '88px', flexShrink: 0,
+              background: 'rgba(255,255,255,0.6)',
+              backdropFilter: 'blur(12px)',
+              borderRadius: '24px',
+              border: '1px solid rgba(255,255,255,0.8)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              position: 'relative',
+              transition: 'transform 0.5s ease',
+              transform: hoveredCard === 4 ? 'rotate(6deg)' : 'rotate(0deg)',
+              zIndex: 1,
+            }}>
+              <Sparkles size={28} color="#7C3AED" />
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
+                style={{
+                  position: 'absolute', top: '-10px', right: '-10px',
+                  width: '32px', height: '32px',
+                  background: '#3B0764', borderRadius: '10px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                <Command size={14} color="#C4B5FD" />
+              </motion.div>
+            </div>
+          </motion.div>
 
-               <div className="relative h-full aspect-square bg-white/20 backdrop-blur-lg rounded-[24px] border border-white/30 flex items-center justify-center group-hover:rotate-3 transition-transform duration-700">
-                  <Sparkles size={32} className="text-black" />
-                  <motion.div 
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ repeat: Infinity, duration: 4 }}
-                    className="absolute -top-3 -right-3 w-10 h-10 bg-black rounded-lg flex items-center justify-center text-[#FFC62A]"
-                  >
-                    <Command size={18} />
-                  </motion.div>
-               </div>
-            </motion.div>
-          </div>
+          {/* CARD 5 — Metrics */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            onMouseEnter={() => setHoveredCard(5)}
+            onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              gridColumn: '10 / 13',
+              background: 'white',
+              borderRadius: '32px',
+              padding: '28px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              border: '1.5px solid #ede9fe',
+              minHeight: '180px',
+              transition: 'all 0.3s ease',
+              boxShadow: hoveredCard === 5 ? '0 16px 48px rgba(124,58,237,0.12)' : '0 2px 12px rgba(124,58,237,0.04)',
+              transform: hoveredCard === 5 ? 'translateY(-4px)' : 'translateY(0)',
+              cursor: 'default',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: '#EDE9FE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <BarChart3 size={16} color="#7C3AED" />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <Zap size={11} color="#4ADE80" />
+                <span style={{ fontSize: '9px', fontWeight: 800, color: '#4ADE80', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Live</span>
+              </div>
+            </div>
+            <div>
+              <div style={{ fontSize: '36px', fontWeight: 900, color: '#7C3AED', letterSpacing: '-0.03em', lineHeight: 1 }}>5.8x</div>
+              <div style={{ fontSize: '10px', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '4px' }}>Avg. ROAS</div>
+            </div>
+          </motion.div>
+
         </div>
 
         {/* BOTTOM NAV */}
-        <div className="mt-12 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-black/5 pt-10">
-           <p className="text-[11px] font-bold tracking-widest text-black/30 uppercase">
-             Trusted by <span className="text-black">50+ Global Partners</span>
-           </p>
-           
-           <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="group flex items-center gap-4 bg-black text-[#FFC62A] px-7 py-3.5 rounded-2xl shadow-lg transition-all"
-           >
-             <span className="font-black uppercase text-[10px] tracking-[0.2em]">Start a Project</span>
-             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-           </motion.button>
+        <div style={{
+          marginTop: '48px',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          flexWrap: 'wrap', gap: '20px',
+          borderTop: '1px solid #ede9fe',
+          paddingTop: '36px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Users size={14} color="#A78BFA" />
+            <p style={{ margin: 0, fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+              Trusted by <span style={{ color: '#0D0D1A' }}>500+ Students</span> across India
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {[{ v: '95%', l: 'Placement Rate' }, { v: '₹500Cr+', l: 'Revenue Driven' }].map(s => (
+              <div key={s.l} style={{
+                display: 'flex', alignItems: 'center', gap: '8px',
+                background: 'white', border: '1px solid #ede9fe',
+                borderRadius: '999px', padding: '8px 16px',
+                boxShadow: '0 2px 10px rgba(124,58,237,0.06)',
+              }}>
+                <span style={{ fontSize: '13px', fontWeight: 900, color: '#7C3AED' }}>{s.v}</span>
+                <span style={{ fontSize: '9px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{s.l}</span>
+              </div>
+            ))}
+
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '10px',
+                background: '#7C3AED', color: 'white',
+                border: 'none', borderRadius: '16px',
+                padding: '14px 24px',
+                fontSize: '10px', fontWeight: 800,
+                letterSpacing: '0.15em', textTransform: 'uppercase',
+                cursor: 'pointer',
+                boxShadow: '0 12px 32px rgba(124,58,237,0.3)',
+              }}
+            >
+              Start a Project <ArrowRight size={14} />
+            </motion.button>
+          </div>
         </div>
 
       </div>

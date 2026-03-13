@@ -1,158 +1,218 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import {
-  Film,
-  Layers,
-  Wind,
-  Figma,
-  Palette,
-  Smartphone,
-  Cpu,
-  ArrowRight,
-  Sparkles
-} from "lucide-react";
 
-const tools = [
-  {
-    name: "Premiere Pro",
-    icon: <Film size={16} />,
-    color: "#EA77FF",
-    id: "01",
-    description: "Industry-standard video editing workflows."
-  },
-  {
-    name: "After Effects",
-    icon: <Wind size={16} />,
-    color: "#9999FF",
-    id: "02",
-    description: "Motion graphics and VFX pipelines."
-  },
-  {
-    name: "DaVinci Resolve",
-    icon: <Layers size={16} />,
-    color: "#FFB347",
-    id: "03",
-    description: "Cinematic color grading and finishing."
-  },
-  {
-    name: "Figma",
-    icon: <Figma size={16} />,
-    color: "#0ACF83",
-    id: "04",
-    description: "UI systems and design architecture."
-  },
-  {
-    name: "Photoshop",
-    icon: <Palette size={16} />,
-    color: "#31A8FF",
-    id: "05",
-    description: "Brand identity and asset design."
-  },
-  {
-    name: "Meta Ads",
-    icon: <Smartphone size={16} />,
-    color: "#0668E1",
-    id: "06",
-    description: "Performance marketing frameworks."
-  },
-  {
-    name: "AI Strategy",
-    icon: <Cpu size={16} />,
-    color: "#365c47",
-    id: "07",
-    description: "Automation and AI-assisted workflows."
-  }
+import React, { useState } from "react";
+import Link from "next/link";
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, TrendingUp } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+const CASES = [
+  { name: "Utkarsh Gupta", role: "Founder, Comet", problem: "Scale operations on Ajio & Myntra while preserving brand identity.", brand: "COMET", tag: "E-Commerce" },
+  { name: "Anil Goteti", role: "Founder, Scapia", problem: "Boost engagement, strengthen loyalty, and build a travel-rewards brand.", brand: "SCAPIA", tag: "FinTech" },
+  { name: "Vibha Harish", role: "Founder, Cosmix", problem: "Increase TOFU awareness and virality through organic channels.", brand: "COSMIX", tag: "D2C Wellness" },
+  { name: "Shamika Haldipurkar", role: "Founder, d'you", problem: "Launch product portfolio across quick-commerce platforms.", brand: "D'YOU", tag: "Quick Commerce" },
+  { name: "Varun Khaitan", role: "Co-Founder, Urban Co", problem: "Improve NPS of Cleaning vertical crossing ₹80Cr ARR.", brand: "URBAN COMPANY", tag: "Marketplace" },
+  { name: "Neha Agarwal", role: "Founder, Nua", problem: "Strengthen customer retention and improve LTV.", brand: "NUA", tag: "Consumer Health" },
+  { name: "Deepak V.", role: "Founder, Bare", problem: "Optimize supply chain for D2C scaling while maintaining margins.", brand: "BARE ANATOMY", tag: "D2C Beauty" },
+  { name: "Rishabh P.", role: "Founder, Mensa", problem: "Acquisition strategy and brand integration for global markets.", brand: "MENSA", tag: "Brand Aggregator" },
+  { name: "Aditi S.", role: "Founder, Heads up", problem: "Omnichannel expansion and customer journey mapping.", brand: "HEADS UP", tag: "Omnichannel" },
+  { name: "Rahul M.", role: "Founder, Wakefit", problem: "Performance marketing scaling for high-ticket home categories.", brand: "WAKEFIT", tag: "Home & Living" },
+  { name: "Pooja D.", role: "Founder, MyGlamm", problem: "Conversion rate optimization for content-to-commerce funnels.", brand: "MYGLAMM", tag: "Beauty Tech" },
+  { name: "Sahil B.", role: "Founder, Zivame", problem: "Retargeting frameworks and lifecycle marketing strategy.", brand: "ZIVAME", tag: "Fashion D2C" },
 ];
 
-export default function TechStackDashboard() {
-  const loop = [...tools, ...tools, ...tools, ...tools];
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const chunks: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) chunks.push(arr.slice(i, i + size));
+  return chunks;
+}
 
+const SLIDES = chunkArray(CASES, 4);
+
+function NavBtn({ cls, icon: Icon }: { cls: string; icon: React.ElementType }) {
+  const [hov, setHov] = useState(false);
   return (
-    <section className="py-20 px-[5%] bg-[#F9F7E8] text-[#1D1D1D] overflow-hidden relative">
-      <div className="max-w-7xl mx-auto">
+    <button
+      className={cls}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        width: '44px', height: '44px', borderRadius: '10px',
+        background: hov ? '#7C3AED' : 'rgba(255,255,255,0.05)',
+        border: `1px solid ${hov ? '#7C3AED' : 'rgba(255,255,255,0.12)'}`,
+        color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        cursor: 'pointer', transition: 'all 0.2s', flexShrink: 0,
+      }}
+    >
+      <Icon size={18} />
+    </button>
+  );
+}
 
-        {/* Header Section */}
-        <div className="text-center mb-14">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center justify-center gap-2 mb-5 px-4 py-1.5 rounded-full border border-[#365c47]/10 bg-[#365c47]/5"
-          >
-            <Sparkles size={12} className="text-[#365c47]" />
-            <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#365c47]">
-              The TAC Suite Tools
-            </span>
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            The Execution <span className="italic font-serif text-[#365c47]">Stack.</span>
-          </h2>
-
-          <p className="max-w-xl mx-auto text-gray-500 text-sm md:text-base font-medium leading-relaxed">
-            Master the production-grade tools used by elite creative teams and global marketing agencies.
-          </p>
-        </div>
-
-        {/* Smaller Infinite Tool Stream */}
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F9F7E8] to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F9F7E8] to-transparent z-10" />
-
-          <div className="flex overflow-hidden py-4">
-            <motion.div
-              animate={{ x: [0, -1800] }}
-              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="flex gap-5"
-            >
-              {loop.map((tool, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="group flex flex-col justify-between bg-white rounded-[1.5rem] px-6 py-6 min-w-[240px] border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(54,92,71,0.08)]"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div
-                      className="w-10 h-10 rounded-xl bg-[#F9F7E8] flex items-center justify-center border border-black/5 shrink-0"
-                      style={{ color: tool.color }}
-                    >
-                      {tool.icon}
-                    </div>
-
-                    <div>
-                      <span className="text-[8px] font-bold uppercase tracking-widest text-[#365c47]/40 block leading-none mb-1">
-                        Node {tool.id}
-                      </span>
-                      <h3 className="text-sm font-bold tracking-tight text-[#1D1D1D]">
-                        {tool.name}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-[12px] text-gray-500 font-medium leading-snug">
-                      {tool.description}
-                    </p>
-
-                    <div className="flex items-center gap-1.5 mt-4 text-[#365c47] text-[9px] font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
-                      <span>Curriculum</span>
-                      <ArrowRight size={12} />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+function CaseCard({ name, role, problem, brand, tag }: {
+  name: string; role: string; problem: string; brand: string; tag: string;
+}) {
+  return (
+    <div style={{
+      borderRadius: '16px',
+      background: 'rgba(255,255,255,0.04)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      padding: '24px 24px 20px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      minHeight: '280px',
+    }}>
+      {/* TOP */}
+      <div>
+        {/* Tag + icon */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center',
+            background: 'rgba(255,255,255,0.07)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: '999px', padding: '4px 12px',
+          }}>
+            <span style={{ fontSize: '9px', fontWeight: 700, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.15em' }}>{tag}</span>
           </div>
+          <TrendingUp size={13} color="rgba(255,255,255,0.25)" />
         </div>
 
-        {/* Bottom context */}
-        <div className="mt-12 text-center">
-          <p className="text-gray-400 text-[11px] font-medium italic">
-            * Agency-standard workflows for the TAC Suite Online.
-          </p>
-        </div>
+        {/* Name */}
+        <p style={{ margin: '0 0 5px', fontSize: '18px', fontWeight: 800, color: 'white', letterSpacing: '-0.01em', lineHeight: 1.2 }}>{name}</p>
 
+        {/* Role */}
+        <p style={{ margin: '0 0 22px', fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.15em' }}>{role}</p>
+
+        {/* Problem label */}
+        <p style={{ margin: '0 0 8px', fontSize: '9px', fontWeight: 700, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Problem Statement</p>
+
+        {/* Problem text */}
+        <p style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontWeight: 400, lineHeight: 1.65 }}>{problem}</p>
+      </div>
+
+      {/* BOTTOM */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '24px' }}>
+        <span style={{
+          fontSize: '16px', fontStyle: 'italic', fontWeight: 600,
+          color: 'rgba(255,255,255,0.2)',
+          fontFamily: 'Georgia, "Times New Roman", serif',
+          letterSpacing: '0.03em',
+        }}>{brand}</span>
+        <div style={{
+          width: '32px', height: '32px', borderRadius: '50%',
+          background: 'rgba(255,255,255,0.07)',
+          border: '1px solid rgba(255,255,255,0.12)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <ArrowRight size={13} color="rgba(255,255,255,0.5)" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function CaseStudiesSection() {
+  return (
+    <section style={{
+      background: '#08061A',
+      padding: '90px 0',
+      fontFamily: "'DM Sans', 'Segoe UI', system-ui, sans-serif",
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+
+      {/* Subtle glow bottom-left */}
+      <div style={{ position: 'absolute', bottom: '-200px', left: '-100px', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 65%)', pointerEvents: 'none' }} />
+
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 5%', position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '80px', alignItems: 'start' }}>
+
+          {/* ── LEFT ── */}
+          <div style={{ position: 'sticky', top: '80px' }}>
+
+            {/* Badge */}
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '7px',
+              background: 'rgba(124,58,237,0.18)',
+              border: '1px solid rgba(124,58,237,0.35)',
+              borderRadius: '999px', padding: '5px 14px', marginBottom: '20px',
+            }}>
+              <Sparkles size={10} color="#A78BFA" />
+              <span style={{ fontSize: '9px', fontWeight: 800, color: '#A78BFA', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Execution Proof</span>
+            </div>
+
+            {/* Title — exactly like screenshot */}
+            <div style={{ marginBottom: '18px' }}>
+              <div style={{ fontSize: 'clamp(38px, 4vw, 56px)', fontWeight: 900, color: 'white', letterSpacing: '-0.03em', lineHeight: 1 }}>Real Case</div>
+              <div style={{ fontSize: 'clamp(38px, 4vw, 56px)', fontWeight: 900, color: '#7C3AED', fontStyle: 'italic', letterSpacing: '-0.03em', lineHeight: 1.05, fontFamily: 'Georgia, serif' }}>Studies</div>
+              <div style={{ fontSize: 'clamp(22px, 2.5vw, 34px)', fontWeight: 800, color: 'rgba(255,255,255,0.25)', letterSpacing: '-0.02em', lineHeight: 1.1, marginTop: '2px' }}>Done by Founders</div>
+            </div>
+
+            {/* Description */}
+            <p style={{ margin: '0 0 28px', fontSize: '13px', color: 'rgba(255,255,255,0.38)', lineHeight: 1.75, fontWeight: 400 }}>
+              Real businesses. Real founders. Real growth challenges solved inside the Treqo ecosystem.
+            </p>
+
+            {/* CTA — pill shaped purple */}
+            <Link href="/case-studies" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+              background: '#7C3AED', color: 'white',
+              borderRadius: '999px', padding: '13px 24px',
+              fontSize: '11px', fontWeight: 800,
+              letterSpacing: '0.12em', textTransform: 'uppercase',
+              textDecoration: 'none', marginBottom: '44px',
+            }}>
+              Explore More <ArrowRight size={13} />
+            </Link>
+
+            {/* Stats */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', marginBottom: '44px', paddingBottom: '36px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+              {[['12+', 'Case Studies'], ['₹500Cr+', 'Revenue Impacted'], ['40+', 'Partner Brands']].map(([val, label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                  <span style={{ fontSize: '22px', fontWeight: 900, color: 'white', minWidth: '90px', letterSpacing: '-0.02em' }}>{val}</span>
+                  <span style={{ fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>{label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Nav arrows + dots */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <NavBtn cls="case-prev-btn" icon={ChevronLeft} />
+              <div style={{ display: 'flex', gap: '6px', alignItems: 'center', margin: '0 4px' }}>
+                {SLIDES.map((_, i) => (
+                  <div key={i} style={{
+                    width: i === 0 ? '22px' : '7px', height: '7px',
+                    borderRadius: '999px',
+                    background: i === 0 ? '#7C3AED' : 'rgba(255,255,255,0.18)',
+                  }} />
+                ))}
+              </div>
+              <NavBtn cls="case-next-btn" icon={ChevronRight} />
+            </div>
+          </div>
+
+          {/* ── RIGHT ── */}
+          <div style={{ minWidth: 0, overflow: 'hidden' }}>
+            <Swiper
+              modules={[Navigation]}
+              slidesPerView={1}
+              spaceBetween={16}
+              navigation={{ nextEl: '.case-next-btn', prevEl: '.case-prev-btn' }}
+            >
+              {SLIDES.map((group, i) => (
+                <SwiperSlide key={i}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                    {group.map((item, j) => <CaseCard key={j} {...item} />)}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+        </div>
       </div>
     </section>
   );

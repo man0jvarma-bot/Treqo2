@@ -33,14 +33,14 @@ function NavBtn({ cls, icon: Icon }: { cls: string; icon: React.ElementType }) {
       onMouseLeave={() => setHov(false)}
       style={{
         width: '44px', height: '44px', borderRadius: '12px',
-        background: hov ? '#5829E5' : 'rgba(255,255,255,0.4)',
-        border: `1px solid ${hov ? 'transparent' : 'rgba(255,255,255,0.2)'}`,
-        color: hov ? 'white' : '#5829E5', display: 'flex', alignItems: 'center', justifyContent: 'center',
-        cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', flexShrink: 0,
-        boxShadow: hov ? '0 10px 25px -5px rgba(88,41,229,0.4)' : 'none',
+        background: hov ? '#5829E5' : 'rgba(255,255,255,0.5)',
+        border: `1px solid ${hov ? 'transparent' : 'rgba(255,255,255,0.3)'}`,
+        color: hov ? 'white' : '#1A0B35', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        cursor: 'pointer', transition: 'all 0.3s ease', flexShrink: 0,
+        boxShadow: hov ? '0 8px 24px rgba(88,41,229,0.2)' : 'none',
       }}
     >
-      <Icon size={20} />
+      <Icon size={18} />
     </button>
   );
 }
@@ -53,15 +53,16 @@ function CaseCard({ name, role, problem, brand, tag }: { name: string; role: str
       onMouseLeave={() => setHovered(false)}
       style={{
         borderRadius: '24px',
-        background: hovered ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.35)',
-        border: `1.5px solid ${hovered ? '#5829E5' : 'rgba(255, 255, 255, 0.5)'}`,
+        background: hovered ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.45)',
+        border: `1.5px solid ${hovered ? '#5829E5' : 'rgba(255, 255, 255, 0.4)'}`,
         padding: '32px',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         minHeight: '320px',
-        transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
-        boxShadow: hovered ? '0 40px 80px -15px rgba(88, 41, 229, 0.15)' : 'none',
-        cursor: 'default', position: 'relative', overflow: 'hidden',
-        backdropFilter: 'blur(16px)'
+        transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
+        transform: hovered ? 'translateY(-10px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 30px 60px rgba(26,11,53,0.1)' : 'none',
+        cursor: 'default', overflow: 'hidden', position: 'relative',
+        backdropFilter: 'blur(20px)'
       }}
     >
       <div>
@@ -69,27 +70,26 @@ function CaseCard({ name, role, problem, brand, tag }: { name: string; role: str
           <div style={{
             display: 'inline-flex', alignItems: 'center',
             background: hovered ? '#5829E5' : 'rgba(255,255,255,0.6)',
-            borderRadius: '999px', padding: '5px 14px',
-            transition: 'all 0.3s ease'
+            borderRadius: '999px', padding: '5px 14px', transition: 'all 0.3s ease'
           }}>
-            <span style={{ fontSize: '10px', fontWeight: 800, color: hovered ? 'white' : '#5829E5', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{tag}</span>
+            <span style={{ fontSize: '9px', fontWeight: 800, color: hovered ? 'white' : '#5829E5', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{tag}</span>
           </div>
-          <TrendingUp size={16} color={hovered ? '#5829E5' : '#64748B'} />
+          <TrendingUp size={14} color={hovered ? '#5829E5' : 'rgba(26,11,53,0.3)'} />
         </div>
 
-        <p style={{ margin: '0 0 4px', fontSize: '20px', fontWeight: 900, color: '#1A0B35', letterSpacing: '-0.03em' }}>{name}</p>
-        <p style={{ margin: '0 0 24px', fontSize: '11px', fontWeight: 700, color: '#5829E5', textTransform: 'uppercase', letterSpacing: '0.12em' }}>{role}</p>
+        <p style={{ margin: '0 0 4px', fontSize: '20px', fontWeight: 900, color: '#1A0B35', letterSpacing: '-0.02em' }}>{name}</p>
+        <p style={{ margin: '0 0 24px', fontSize: '11px', fontWeight: 700, color: '#5829E5', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{role}</p>
 
-        <p style={{ margin: '0 0 8px', fontSize: '9px', fontWeight: 800, color: 'rgba(26, 11, 53, 0.4)', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Growth Focus</p>
+        <p style={{ margin: '0 0 6px', fontSize: '9px', fontWeight: 800, color: 'rgba(26,11,53,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Growth Focus</p>
         <p style={{ margin: 0, fontSize: '14px', color: '#334155', fontWeight: 500, lineHeight: 1.6 }}>{problem}</p>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '28px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '24px' }}>
         <span style={{ fontSize: '18px', fontStyle: 'italic', fontWeight: 800, color: '#1A0B35', fontFamily: 'Georgia, serif' }}>{brand}</span>
         <div style={{
           width: '36px', height: '36px', borderRadius: '50%',
-          background: hovered ? '#1A0B35' : 'rgba(26, 11, 53, 0.05)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s ease',
+          background: hovered ? '#1A0B35' : 'rgba(26,11,53,0.05)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.3s',
         }}>
           <ArrowRight size={16} color={hovered ? 'white' : '#1A0B35'} />
         </div>
@@ -101,89 +101,74 @@ function CaseCard({ name, role, problem, brand, tag }: { name: string; role: str
 export default function CaseStudiesSection() {
   return (
     <section style={{
-      /* TRANSITION FIX: Starts with top component color and flows down */
-      background: 'linear-gradient(to bottom, #F3CCF4 0%, #B8BBDC 30%, #A5A9D4 100%)',
-      padding: '140px 0',
+      background: '#A5A9D4', // Updated to A5A9D4
+      padding: '120px 0',
       fontFamily: "'DM Sans', sans-serif",
       position: 'relative', overflow: 'hidden',
     }}>
-
-      {/* SUBTLE GHOST GRID */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 80%)'
-        }} />
+      
+      {/* Structural Invisible Grid */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.1 }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, white 39px, white 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, white 39px, white 40px)' }} />
       </div>
 
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 5%', position: 'relative', zIndex: 2 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: '80px', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '80px', alignItems: 'start' }}>
 
-          {/* LEFT PANEL */}
-          <div style={{ position: 'sticky', top: '120px' }}>
+          {/* LEFT STICKY PANEL */}
+          <div style={{ position: 'sticky', top: '100px' }}>
             <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
+              display: 'inline-flex', alignItems: 'center', gap: 7,
               background: 'white', border: '1px solid rgba(255,255,255,0.6)',
-              borderRadius: '999px', padding: '6px 16px', marginBottom: '28px',
+              borderRadius: '999px', padding: '6px 16px', marginBottom: '24px',
               boxShadow: '0 4px 15px rgba(0,0,0,0.03)'
             }}>
-              <Sparkles size={12} color="#5829E5" />
-              <span style={{ fontSize: '10px', fontWeight: 800, color: "#5829E5", letterSpacing: '0.15em', textTransform: 'uppercase' }}>Execution Proof</span>
+              <Sparkles size={11} color="#5829E5" />
+              <span style={{ fontSize: '10px', fontWeight: 800, color: '#5829E5', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Execution Proof</span>
             </div>
 
             <h2 style={{ marginBottom: '24px', lineHeight: 1.1 }}>
+              <span style={{ display: 'block', fontSize: 'clamp(40px, 4vw, 56px)', fontWeight: 900, color: '#1A0B35', letterSpacing: '-0.03em' }}>Real Case</span>
               <span style={{
-                display: 'inline-block', // Fixed gradient clipping
-                fontSize: 'clamp(42px, 4.5vw, 62px)',
+                display: 'inline-block', 
+                fontSize: 'clamp(40px, 4vw, 56px)', 
                 fontWeight: 900,
-                letterSpacing: '-0.04em',
-                background: 'linear-gradient(to right, #959595 0%, #5829E5 40%, #6d1cff 41%, #bd99ff 100%);',
-                WebkitBackgroundClip: 'text',
+                fontStyle: 'italic', 
+                background: 'linear-gradient(to right, #1A0B35 0%, #5829E5 50%, #1A0B35 100%)',
+                WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
+                letterSpacing: '-0.03em',
                 paddingBottom: '8px'
-              }}>
-                Real Case
-              </span>
-              <span style={{
-                display: 'block', fontSize: 'clamp(42px, 4.5vw, 62px)', fontWeight: 900,
-                fontStyle: 'italic', color: '#1A0B35',
-                letterSpacing: '-0.04em', marginTop: '4px'
               }}>Studies</span>
-              <span style={{ display: 'block', fontSize: '24px', fontWeight: 800, color: 'rgba(26, 11, 53, 0.3)', letterSpacing: '-0.03em', marginTop: '8px' }}>Done by Founders</span>
+              <span style={{ display: 'block', fontSize: '24px', fontWeight: 800, color: 'rgba(26, 11, 53, 0.4)', letterSpacing: '-0.02em', marginTop: '4px' }}>Done by Founders</span>
             </h2>
 
-            <p style={{ margin: '0 0 40px', fontSize: '15px', color: '#334155', lineHeight: 1.7, fontWeight: 500, maxWidth: '300px' }}>
+            <p style={{ margin: '0 0 32px', fontSize: '15px', color: '#1A0B35', lineHeight: 1.7, fontWeight: 500, opacity: 0.8 }}>
               Real businesses. Real founders. Real growth challenges solved inside the Treqo ecosystem.
             </p>
 
             <Link href="/case-studies" style={{
               display: 'inline-flex', alignItems: 'center', gap: '10px',
               background: '#1A0B35', color: 'white', borderRadius: '16px', padding: '16px 32px',
-              fontSize: '12px', fontWeight: 800, letterSpacing: '0.08em',
-              textTransform: 'uppercase', textDecoration: 'none', marginBottom: '56px',
+              fontSize: '11px', fontWeight: 800, letterSpacing: '0.1em',
+              textTransform: 'uppercase', textDecoration: 'none', marginBottom: '48px',
               transition: 'all 0.3s ease',
-              boxShadow: '0 15px 30px -10px rgba(26, 11, 53, 0.3)'
+              boxShadow: '0 10px 20px rgba(26,11,53,0.2)'
             }}
               onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
               onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
             >
-              Explore All <ArrowRight size={16} />
+              Explore All <ArrowRight size={14} />
             </Link>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <NavBtn cls="case-prev-btn" icon={ChevronLeft} />
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 {SLIDES.map((_, i) => (
                   <div key={i} style={{
                     width: '8px', height: '8px', borderRadius: '50%',
-                    background: i === 0 ? '#5829E5' : 'rgba(255,255,255,0.6)',
+                    background: i === 0 ? '#1A0B35' : 'rgba(255,255,255,0.6)',
                   }} />
                 ))}
               </div>

@@ -1,256 +1,524 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, CheckCircle2, Terminal } from "lucide-react";
-
-/* ===================== DATA ===================== */
+import { Sparkles, CheckCircle2, Terminal, ArrowRight, Zap } from "lucide-react";
 
 const TERM_DATA = [
   {
     id: 1,
     title: "Marketing Foundations",
-    tools: ["Google Trends", "Canva", "ChatGPT"],
-    techniques: [
-      "Market Research",
-      "Customer Personas",
-      "Brand Positioning",
-      "Value Proposition",
-    ],
+    subtitle: "Build the base",
+    tools: ["Google Trends", "Canva", "ChatGPT", "Notion"],
+    techniques: ["Market Research", "Customer Personas", "Brand Positioning", "Value Proposition"],
   },
   {
     id: 2,
     title: "Performance Marketing",
-    tools: ["Google Ads", "Meta Ads", "Hotjar"],
-    techniques: [
-      "Paid Campaign Structuring",
-      "Conversion Tracking",
-      "A/B Testing",
-      "ROAS Optimization",
-    ],
+    subtitle: "Run paid campaigns",
+    tools: ["Google Ads", "Meta Ads Manager", "Hotjar", "Triple Whale"],
+    techniques: ["Paid Campaign Structuring", "Conversion Tracking", "A/B Testing", "ROAS Optimization"],
   },
   {
     id: 3,
     title: "Content & SEO",
-    tools: ["Ahrefs", "SEMrush", "Surfer SEO"],
-    techniques: [
-      "Keyword Research",
-      "On-page SEO",
-      "Content Calendars",
-      "Topic Clustering",
-    ],
+    subtitle: "Own organic traffic",
+    tools: ["Ahrefs", "SEMrush", "Surfer SEO", "Screaming Frog"],
+    techniques: ["Keyword Research", "On-page SEO", "Content Calendars", "Topic Clustering"],
   },
   {
     id: 4,
     title: "Growth Funnels",
-    tools: ["Webflow", "Zapier", "Google Analytics"],
-    techniques: [
-      "Funnel Mapping",
-      "Lead Magnets",
-      "Email Automation",
-      "Retention Loops",
-    ],
+    subtitle: "Convert & retain",
+    tools: ["Webflow", "Zapier", "Klaviyo", "Google Analytics"],
+    techniques: ["Funnel Mapping", "Lead Magnets", "Email Automation", "Retention Loops"],
   },
   {
     id: 5,
     title: "Analytics & Optimization",
-    tools: ["GA4", "Looker Studio", "Mixpanel"],
-    techniques: [
-      "Cohort Analysis",
-      "Event Tracking",
-      "Funnel Analysis",
-      "Data-led Decisions",
-    ],
+    subtitle: "Measure everything",
+    tools: ["GA4", "Looker Studio", "Mixpanel", "Amplitude"],
+    techniques: ["Cohort Analysis", "Event Tracking", "Funnel Analysis", "Data-led Decisions"],
   },
 ];
-
-/* ===================== PAGE ===================== */
 
 export default function TermToolsPage() {
   const [activeTerm, setActiveTerm] = useState(TERM_DATA[0]);
 
   return (
-    <section className="bg-[#FBF8E4] py-32 relative overflow-hidden">
-      
-      {/* Seamless Transition Detail */}
-      <div className="absolute top-0 left-[5%] right-[5%] h-px bg-[#1D1D1D]/5" />
+    <section
+      style={{
+        background: "#0B233F",
+        padding: "120px 0",
+        position: "relative",
+        overflow: "hidden",
+        fontFamily: "'DM Sans', 'Segoe UI', system-ui, sans-serif",
+      }}
+    >
+      {/* GRID BACKGROUND */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: 0,
+          opacity: 0.1,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `
+            linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px)
+          `,
+            backgroundSize: "80px 80px",
+          }}
+        />
+      </div>
 
-      <div className="w-full px-[5%] relative z-10">
-
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          maxWidth: "1300px",
+          margin: "0 auto",
+          padding: "0 5%",
+        }}
+      >
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1D1D1D]/5 border border-[#1D1D1D]/10 mb-6">
-            <Sparkles className="w-3 h-3 text-[#1D1D1D]" />
-            <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-[#1D1D1D]">
+        <div style={{ textAlign: "center", marginBottom: "72px" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: "999px",
+              padding: "6px 16px",
+              marginBottom: "24px",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+            }}
+          >
+            <Sparkles size={12} color="#7278ecff" />
+            <span
+              style={{
+                fontSize: "10px",
+                fontWeight: 800,
+                color: "white",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+              }}
+            >
               Curriculum Stack
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black text-[#1D1D1D] leading-tight mb-8">
-            What You’ll Learn <br />
-            <span className="italic font-serif text-[#FFC62A] relative">
+          <h2
+            style={{
+              margin: "0 auto 20px",
+              lineHeight: 1.05,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            <span
+              style={{
+                display: "block",
+                fontSize: "clamp(42px, 5.5vw, 72px)",
+                fontWeight: 900,
+                color: "white",
+                background:
+                  "linear-gradient(to right, #FFFFFF 0%, #FFFFFF 35%, #60A5FA 36%, #60A5FA 100%)",
+                backgroundClip: "text", // bug fix
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              What You'll Learn
+            </span>
+
+            <span
+              style={{
+                display: "block",
+                fontSize: "clamp(42px, 5.5vw, 72px)",
+                fontWeight: 900,
+                color: "white",
+                fontStyle: "italic",
+              }}
+            >
               Inside The System
-              <svg className="absolute -bottom-2 left-0 w-full h-2 text-[#FFC62A]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="none"/>
-              </svg>
             </span>
           </h2>
-          <p className="text-[#1D1D1D]/60 text-lg md:text-xl max-w-2xl mx-auto">
-            Each term is engineered to build high-performance, job-ready 
-            execution skills through real-world scenarios.
+
+          <p
+            style={{
+              fontSize: "16px",
+              color: "rgba(255,255,255,0.5)",
+              fontWeight: 500,
+              maxWidth: "480px",
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            Each term is engineered to build high-performance execution skills
+            through a unified growth framework.
           </p>
         </div>
 
         {/* MAIN LAYOUT */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] rounded-[2.5rem] overflow-hidden border border-[#1D1D1D]/10 bg-white/40 backdrop-blur-xl shadow-2xl">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "360px 1fr",
+            borderRadius: "40px",
+            overflow: "hidden",
+            border: "1px solid rgba(255,255,255,0.1)",
+            background: "rgba(255,255,255,0.03)",
+            backdropFilter: "blur(20px)",
+            boxShadow: "0 40px 100px rgba(0,0,0,0.4)",
+          }}
+        >
+          {/* LEFT PANEL */}
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.02)",
+              borderRight: "1px solid rgba(255,255,255,0.05)",
+            }}
+          >
+            <div
+              style={{
+                padding: "32px 32px 24px",
+                borderBottom: "1px solid rgba(255,255,255,0.05)",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 4px",
+                  fontSize: "9px",
+                  fontWeight: 800,
+                  color: "#60A5FA",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.25em",
+                }}
+              >
+                Program Timeline
+              </p>
+              <h3
+                style={{
+                  margin: 0,
+                  fontSize: "20px",
+                  fontWeight: 900,
+                  color: "white",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                PHASES
+              </h3>
+            </div>
 
-          <TermList
-            terms={TERM_DATA}
-            active={activeTerm}
-            onSelect={setActiveTerm}
-          />
+            <div
+              style={{
+                padding: "20px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+              }}
+            >
+              {TERM_DATA.map((term) => {
+                const isActive = term.id === activeTerm.id;
 
-          <ToolsPanel data={activeTerm} />
+                return (
+                  <button
+                    key={term.id}
+                    onClick={() => setActiveTerm(term)}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "16px",
+                      width: "100%",
+                      padding: "20px",
+                      borderRadius: "20px",
+                      textAlign: "left",
+                      background: isActive ? "white" : "transparent",
+                      border: `1px solid ${
+                        isActive ? "white" : "transparent"
+                      }`,
+                      cursor: "pointer",
+                      transition:
+                        "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: 900,
+                        minWidth: "24px",
+                        color: isActive ? "#0B233F" : "#60A5FA",
+                        fontFamily: "serif",
+                      }}
+                    >
+                      0{term.id}
+                    </span>
 
+                    <div style={{ flex: 1 }}>
+                      <p
+                        style={{
+                          margin: 0,
+                          fontSize: "13px",
+                          fontWeight: 800,
+                          color: isActive
+                            ? "#0B233F"
+                            : "rgba(255,255,255,0.7)",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        {term.title}
+                      </p>
+                    </div>
+
+                    {isActive && (
+                      <Terminal size={14} color="#0B233F" opacity={0.5} />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div
+              style={{
+                padding: "24px",
+                margin: "0 20px 20px",
+                borderRadius: "24px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.05)",
+              }}
+            >
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "#60A5FA",
+                  color: "#0B233F",
+                  border: "none",
+                  borderRadius: "12px",
+                  padding: "14px",
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  width: "100%",
+                  justifyContent: "center",
+                  boxShadow: "0 10px 20px rgba(96,165,250,0.2)",
+                }}
+              >
+                Enroll Now <ArrowRight size={14} />
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT PANEL */}
+          <div style={{ padding: "64px 72px" }}>
+            <div style={{ marginBottom: "56px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  marginBottom: "12px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    background: "#60A5FA",
+                    boxShadow: "0 0 12px #60A5FA",
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 800,
+                    color: "#60A5FA",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  Term 0{activeTerm.id}
+                </span>
+              </div>
+
+              <h2
+                style={{
+                  margin: "0 0 8px",
+                  fontSize: "48px",
+                  fontWeight: 900,
+                  color: "white",
+                  letterSpacing: "-0.04em",
+                  lineHeight: 1,
+                }}
+              >
+                {activeTerm.title}
+              </h2>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "15px",
+                  color: "rgba(255,255,255,0.4)",
+                  fontWeight: 500,
+                  fontStyle: "italic",
+                }}
+              >
+                {activeTerm.subtitle}
+              </p>
+            </div>
+
+            {/* TECH STACK */}
+            <div style={{ marginBottom: "52px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  marginBottom: "24px",
+                }}
+              >
+                <Zap size={14} color="#60A5FA" />
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    color: "rgba(255,255,255,0.3)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  Tech Stack
+                </h3>
+                <div
+                  style={{
+                    flex: 1,
+                    height: "1px",
+                    background: "rgba(255,255,255,0.05)",
+                  }}
+                />
+              </div>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+                {activeTerm.tools.map((tool, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      padding: "12px 24px",
+                      borderRadius: "14px",
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      color: "white",
+                    }}
+                  >
+                    {tool}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* TECHNIQUES */}
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  marginBottom: "24px",
+                }}
+              >
+                <CheckCircle2 size={14} color="#60A5FA" />
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    color: "rgba(255,255,255,0.3)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  Core Methodology
+                </h3>
+                <div
+                  style={{
+                    flex: 1,
+                    height: "1px",
+                    background: "rgba(255,255,255,0.05)",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "12px",
+                }}
+              >
+                {activeTerm.techniques.map((tech, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "16px",
+                      padding: "24px",
+                      borderRadius: "20px",
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        borderRadius: "10px",
+                        flexShrink: 0,
+                        background: "white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "11px",
+                        fontWeight: 900,
+                        color: "#0B233F",
+                      }}
+                    >
+                      {i + 1}
+                    </div>
+
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: "13px",
+                        fontWeight: 800,
+                        color: "white",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      {tech}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-/* ===================== TERM LIST ===================== */
-
-function TermList({
-  terms,
-  active,
-  onSelect,
-}: {
-  terms: typeof TERM_DATA;
-  active: typeof TERM_DATA[number];
-  onSelect: (t: typeof TERM_DATA[number]) => void;
-}) {
-  return (
-    <div className="bg-[#1D1D1D] text-[#FBF8E4] px-4 py-8">
-
-      <div className="px-6 py-6 mb-4 border-b border-white/5">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[#FFC62A] font-black mb-2">
-          Execution Path
-        </p>
-        <h3 className="text-xl font-black uppercase tracking-tighter">
-          Program Terms
-        </h3>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        {terms.map((term) => {
-          const isActive = term.id === active.id;
-
-          return (
-            <button
-              key={term.id}
-              onClick={() => onSelect(term)}
-              className={`
-                relative flex items-center gap-6
-                w-full px-6 py-6 text-left rounded-2xl
-                transition-all duration-500 group
-                ${
-                  isActive
-                    ? "bg-[#FBF8E4] text-[#1D1D1D]"
-                    : "text-white/40 hover:bg-white/5"
-                }
-              `}
-            >
-              <span className={`
-                text-sm font-black transition-colors
-                ${isActive ? "text-[#FFC62A]" : "text-white/20 group-hover:text-white/40"}
-              `}>
-                0{term.id}
-              </span>
-
-              <div>
-                <p className={`
-                  text-[10px] uppercase tracking-widest font-bold mb-1
-                  ${isActive ? "text-[#1D1D1D]/40" : "text-white/20"}
-                `}>
-                  Term Phase
-                </p>
-                <p className="font-black text-sm uppercase tracking-tight leading-none">
-                  {term.title}
-                </p>
-              </div>
-              
-              {isActive && (
-                <div className="ml-auto">
-                  <Terminal className="w-4 h-4 text-[#FFC62A]" />
-                </div>
-              )}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-/* ===================== TOOLS PANEL ===================== */
-
-function ToolsPanel({ data }: { data: typeof TERM_DATA[number] }) {
-  return (
-    <div className="px-10 lg:px-16 py-16 bg-white/30">
-
-      <div className="grid grid-cols-1 gap-16">
-
-        {/* TOOLS */}
-        <div>
-          <div className="flex items-center gap-3 mb-8">
-            <h3 className="text-xl font-black text-[#1D1D1D] uppercase tracking-tighter">
-              Tools You’ll Use
-            </h3>
-            <div className="h-px flex-grow bg-[#1D1D1D]/5" />
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            {data.tools.map((tool, i) => (
-              <Badge key={i} label={tool} />
-            ))}
-          </div>
-        </div>
-
-        {/* TECHNIQUES */}
-        <div>
-          <div className="flex items-center gap-3 mb-8">
-            <h3 className="text-xl font-black text-[#1D1D1D] uppercase tracking-tighter">
-              Execution Mastery
-            </h3>
-            <div className="h-px flex-grow bg-[#1D1D1D]/5" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {data.techniques.map((tech, i) => (
-              <Technique key={i} label={tech} />
-            ))}
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-}
-
-/* ===================== UI ELEMENTS ===================== */
-
-function Badge({ label }: { label: string }) {
-  return (
-    <div className="px-6 py-3 rounded-xl border border-[#1D1D1D]/10 bg-white/50 text-xs font-black uppercase tracking-widest text-[#1D1D1D] transition-all duration-500 hover:bg-[#FFC62A] hover:border-[#FFC62A] hover:shadow-xl cursor-default">
-      {label}
-    </div>
-  );
-}
-
-function Technique({ label }: { label: string }) {
-  return (
-    <div className="group flex items-center gap-4 px-8 py-6 rounded-3xl bg-white/40 border border-[#1D1D1D]/5 transition-all duration-500 hover:bg-white/80 hover:border-[#FFC62A]/30 hover:shadow-2xl">
-      <CheckCircle2 className="w-5 h-5 text-[#FFC62A]" />
-      <p className="font-bold text-[#1D1D1D] text-sm uppercase tracking-tight">{label}</p>
-    </div>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const navItems = [
@@ -32,166 +31,121 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const scrolledWrapperStyle: React.CSSProperties = {
+    maxWidth: "60%",
+    margin: "14px auto 0",
+    padding: "14px 40px",
+    background: "#ffffff",
+    borderRadius: "9999px",
+    border: "1px solid #ede9fe",
+    boxShadow: "0 4px 20px rgba(76,29,149,0.10)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    transition: "all 500ms ease-in-out",
+  };
+
+  const topWrapperStyle: React.CSSProperties = {
+    maxWidth: "100%",
+    padding: "22px 5%",
+    background: "#ffffff",
+    borderBottom: "1px solid #f1f5f9",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    transition: "all 500ms ease-in-out",
+  };
+
   return (
     <>
-      {/* NAVBAR */}
       <nav
-        className={`
-          fixed top-0 left-0 w-full z-50
-          transition-all duration-500 ease-in-out
-          ${hidden ? "-translate-y-full" : "translate-y-0"}
-        `}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 50,
+          transform: hidden ? "translateY(-100%)" : "translateY(0)",
+          transition: "transform 500ms ease-in-out",
+        }}
       >
-        <div
-          className={`
-            mx-auto flex items-center
-            transition-all duration-500 ease-in-out
-            ${
-              scrolled
-                ? `
-                  max-w-[82%]
-                  px-6 py-1.5
-                  bg-white/90
-                  backdrop-blur-xl
-                  rounded-full
-                  border border-[#365c47]/20
-                  shadow-[0_8px_24px_rgba(0,0,0,0.08)]
-                  justify-between
-                  mt-2
-                `
-                : `
-                  max-w-full
-                  px-[5%]
-                  py-4
-                  bg-black/40 backdrop-blur-md
-                  justify-between
-                `
-            }
-          `}
-        >
+        <div style={scrolled ? scrolledWrapperStyle : topWrapperStyle}>
           {/* LOGO */}
-          <div className="flex items-center gap-4">
-            <Image
-              src="/logo.png"
-              alt="TAC"
-              width={scrolled ? 95 : 110}
-              height={36}
-              priority
-              className="transition-all duration-500"
-            />
-          </div>
+          <span
+            style={{
+              fontSize: scrolled ? "22px" : "26px",
+              fontWeight: 900,
+              color: "#5829E5",
+              letterSpacing: "-0.02em",
+              transition: "font-size 0.3s",
+              fontFamily: "'Segoe UI', system-ui, sans-serif",
+            }}
+          >
+            Treqo
+          </span>
 
           {/* DESKTOP NAV */}
           <ul
-            className={`
-              hidden md:flex items-center
-              ${scrolled ? "gap-5" : "gap-6"}
-            `}
+            className="hidden md:flex items-center"
+            style={{ gap: scrolled ? 32 : 40, listStyle: "none", margin: 0, padding: 0 }}
           >
             {navItems.map((item) => (
               <li
                 key={item}
                 onClick={() => setActive(item)}
-                className="relative group cursor-pointer"
+                className="relative group"
+                style={{ cursor: "pointer" }}
               >
                 <span
-                  className={`
-                    uppercase tracking-[0.15em] font-extrabold
-                    transition-all duration-300
-                    ${scrolled ? "text-[10px]" : "text-[12px]"}
-                    ${
-                      active === item
-                        ? "text-[#FFC62A]"
-                        : scrolled
-                        ? "text-[#2F2F2F] group-hover:text-[#365c47]"
-                        : "text-white group-hover:text-[#FFC62A]"
-                    }
-                  `}
+                  style={{
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    fontWeight: 800,
+                    fontSize: scrolled ? "12px" : "13px",
+                    color: active === item ? "#7c3aed" : "#64748b",
+                    transition: "color 300ms",
+                  }}
                 >
-                  <span
-                    className={
-                      active === item
-                        ? "font-serif italic capitalize tracking-normal text-sm"
-                        : ""
-                    }
-                  >
-                    {item}
-                  </span>
+                  {item}
                 </span>
-
-                {/* UNDERLINE */}
-                <span
-                  className={`
-                    absolute -bottom-1 left-1/2 h-[2px]
-                    bg-[#FFC62A]
-                    transition-all duration-300
-                    ${
-                      active === item
-                        ? "w-full -translate-x-1/2"
-                        : "w-0 group-hover:w-full group-hover:-translate-x-1/2"
-                    }
-                  `}
-                />
               </li>
             ))}
           </ul>
 
-          {/* MOBILE BUTTON */}
+          {/* MOBILE TOGGLE */}
           <button
-            className={`md:hidden text-xl transition-colors ${
-              scrolled ? "text-[#2F2F2F]" : "text-white"
-            }`}
-            onClick={() => setMobileOpen(true)}
+            className="md:hidden focus:outline-none"
+            style={{ padding: 8, display: "flex", flexDirection: "column", gap: 6, background: "none", border: "none", cursor: "pointer" }}
+            onClick={() => setMobileOpen(!mobileOpen)}
           >
-            ☰
+            <div style={{ width: 24, height: 2, background: "#1e293b", transition: "all 300ms", transform: mobileOpen ? "rotate(45deg) translateY(8px)" : "none" }} />
+            <div style={{ width: 24, height: 2, background: "#1e293b", transition: "all 300ms", opacity: mobileOpen ? 0 : 1 }} />
+            <div style={{ width: 24, height: 2, background: "#1e293b", transition: "all 300ms", transform: mobileOpen ? "rotate(-45deg) translateY(-8px)" : "none" }} />
           </button>
         </div>
       </nav>
 
       {/* MOBILE MENU */}
-      <div
-        className={`
-          fixed inset-0 z-[60]
-          bg-[#365c47]
-          transition-transform duration-700 ease-in-out
-          ${mobileOpen ? "translate-x-0" : "translate-x-full"}
-        `}
-      >
-        <div className="flex justify-between items-center px-[5%] py-5">
-          <Image
-            src="/logo.png"
-            alt="TAC"
-            width={95}
-            height={32}
-            className="brightness-0 invert"
-          />
-          <button
-            onClick={() => setMobileOpen(false)}
-            className="text-2xl text-[#FFC62A]"
-          >
-            ✕
-          </button>
+      {mobileOpen && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 40, background: "#ffffff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+          <ul style={{ display: "flex", flexDirection: "column", gap: 32, textAlign: "center", listStyle: "none", padding: 0, margin: 0 }}>
+            {navItems.map((item) => (
+              <li
+                key={item}
+                onClick={() => {
+                  setActive(item);
+                  setMobileOpen(false);
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                <span style={{ fontSize: 28, fontWeight: 700, color: active === item ? "#7c3aed" : "#1e293b" }}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <ul className="flex flex-col items-center gap-5 mt-10">
-          {navItems.map((item) => (
-            <li
-              key={item}
-              className={`text-lg font-extrabold tracking-tight transition-all ${
-                active === item
-                  ? "text-[#FFC62A] font-serif italic capitalize"
-                  : "text-white"
-              }`}
-              onClick={() => {
-                setActive(item);
-                setMobileOpen(false);
-              }}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      )}
     </>
   );
 }

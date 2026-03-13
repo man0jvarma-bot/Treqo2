@@ -1,145 +1,180 @@
 "use client";
 
-import { ArrowRight, Monitor, Building2, Sparkles } from "lucide-react";
+import { ArrowRight, Monitor, Building2, Sparkles, Zap, Globe } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 const programs = [
-  {
-    id: "sam-pro",
-    name: "SAM Pro",
-    badge: "100% ONLINE",
-    icon: Monitor,
-    tagline: "Master Digital Marketing from Anywhere",
-    description:
-      "Flexible, self-paced learning with live sessions, real projects, and expert mentorship.",
-    highlights: [
-      "Live interactive sessions",
-      "Real client projects",
-      "Flexible scheduling",
-      "1-on-1 mentorship",
-    ],
-    duration: "12 Weeks",
-    path: "/sam-pro",
-  },
-  {
-    id: "mark-pro",
-    name: "MARK Pro",
-    badge: "ONLINE + OFFLINE",
-    icon: Building2,
-    tagline: "The Complete Hybrid Experience",
-    description:
-      "Combine the best of both worlds with online learning and in-person campus sessions.",
-    highlights: [
-      "In-person workshops",
-      "Peer networking",
-      "Campus experience",
-      "Industry visits",
-    ],
-    duration: "16 Weeks",
-    path: "/mark-pro",
-  },
+  { id: "sam", name: "SAM Pro", badge: "100% ONLINE", icon: Monitor, tagline: "Master Digital Marketing from Anywhere", description: "Flexible, self-paced learning with live sessions, real projects, and expert mentorship.", highlights: ["Live sessions", "Real projects", "Flexible", "Mentorship"], duration: "12 Weeks", path: "/sam-pro", pill: Zap },
+  { id: "mark", name: "MARK Pro", badge: "ONLINE + OFFLINE", icon: Building2, tagline: "The Complete Hybrid Experience", description: "Combine online learning and in-person campus sessions for full career transformation.", highlights: ["Workshops", "Networking", "Campus", "Industry visits"], duration: "16 Weeks", path: "/mark-pro", pill: Globe },
 ];
 
 export function ProgramsSection() {
+  const [hovered, setHovered] = useState(null);
+
   return (
-    <section className="relative py-32 overflow-hidden bg-[#FBF8E4]">
-      
-      {/* Brand Background Elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFC62A]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#1D1D1D]/5 rounded-full blur-[100px] pointer-events-none" />
+    <section style={{
+      position: 'relative',
+      /* FLOW FIX: Handshake from previous #E6D7F3 into #B39CD4 */
+      background: 'linear-gradient(to bottom, #E6D7F3 0%, #B39CD4 30%, #B39CD4 100%)',
+      overflow: 'hidden',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      padding: '140px 0',
+      fontFamily: "'DM Sans', sans-serif"
+    }}>
 
-      <div className="relative z-10 w-full px-[5%]">
+      {/* BACKGROUND ELEMENTS */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+        <svg width="100%" height="100%" style={{ position: 'absolute', inset: 0 }}>
+          <defs>
+            <pattern id="prog-grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="40" stroke="#FFFFFF" strokeWidth="0.5" strokeOpacity="0.12" />
+              <line x1="0" y1="0" x2="40" y2="0" stroke="#FFFFFF" strokeWidth="0.5" strokeOpacity="0.12" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#prog-grid)" />
+        </svg>
 
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1D1D1D]/5 border border-[#1D1D1D]/10 mb-6">
-            <Sparkles className="w-3 h-3 text-[#1D1D1D]" />
-            <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-[#1D1D1D]">
-              Select Your Path
-            </span>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0%, transparent 70%)'
+        }} />
+      </div>
+
+      <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: 1200, margin: '0 auto', padding: '0 5%' }}>
+
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            background: 'white',
+            border: '1px solid rgba(255, 255, 255, 0.4)',
+            borderRadius: 99,
+            padding: '6px 16px',
+            marginBottom: 20,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
+          }}>
+            <Sparkles size={12} color="#5829E5" />
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#5829E5', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Select Your Path</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black text-[#1D1D1D] leading-tight mb-8">
-            Choose Your <br />
-            <span className="italic font-serif text-[#FFC62A] relative">
+          <h2 style={{ margin: 0, lineHeight: 1.1 }}>
+            <span style={{
+              display: 'block',
+              fontSize: 'clamp(40px, 6vw, 72px)',
+              fontWeight: 900,
+              color: '#1A0B35',
+              letterSpacing: '-0.02em'
+            }}>
+              Choose Your
+            </span>
+
+            <span style={{
+              /* BUG-FREE GRADIENT: inline-block + padding */
+              display: 'inline-block',
+              fontSize: 'clamp(40px, 6vw, 72px)',
+              fontWeight: 900,
+              fontStyle: 'italic',
+              background: 'linear-gradient(to right, #1A0B35 0%, #5829E5 50%, #1A0B35 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              letterSpacing: '-0.02em',
+              paddingBottom: '8px'
+            }}>
               Learning System
-              <svg className="absolute -bottom-2 left-0 w-full h-2 text-[#FFC62A]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="none"/>
-              </svg>
             </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-[#1D1D1D]/60 max-w-2xl mx-auto">
-            Two specialized frameworks engineered for different learning trajectories and career goals.
+          <p style={{
+            fontSize: 16,
+            color: '#334155',
+            maxWidth: 480,
+            margin: '20px auto 0',
+            lineHeight: 1.6,
+            fontWeight: 500
+          }}>
+            Two specialized frameworks for different learning trajectories and career goals.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {programs.map((program) => (
-            <div
-              key={program.id}
-              className="group relative rounded-[40px] p-[1.5px] bg-[#1D1D1D]/10 transition-all duration-500 hover:bg-[#FFC62A]"
-            >
-              <div className="rounded-[38.5px] bg-white/60 backdrop-blur-xl p-10 lg:p-14 h-full flex flex-col transition-all duration-500 group-hover:bg-white/90 group-hover:shadow-2xl">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 24 }}>
+          {programs.map(p => {
+            const isH = hovered === p.id;
+            return (
+              <div key={p.id}
+                onMouseEnter={() => setHovered(p.id)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  borderRadius: 32,
+                  background: isH ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 0.35)',
+                  border: `1.5px solid ${isH ? '#5829E5' : 'rgba(255, 255, 255, 0.5)'}`,
+                  padding: 40,
+                  transition: 'all .4s cubic-bezier(0.23, 1, 0.32, 1)',
+                  transform: isH ? 'translateY(-12px)' : 'none',
+                  boxShadow: isH ? '0 40px 80px -20px rgba(88, 41, 229, 0.15)' : 'none',
+                  position: 'relative',
+                  backdropFilter: 'blur(12px)'
+                }}>
 
-                <div className="flex items-start justify-between mb-10">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 32 }}>
                   <div>
-                    <span className="inline-block mb-4 px-3 py-1 text-[10px] font-black tracking-widest rounded-full bg-[#1D1D1D] text-white">
-                      {program.badge}
-                    </span>
-
-                    <h3 className="text-3xl font-black text-[#1D1D1D] tracking-tighter">
-                      {program.name}
-                    </h3>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#5829E5', borderRadius: 99, padding: '4px 12px', marginBottom: 12 }}>
+                      <p.pill size={10} color="#FFFFFF" />
+                      <span style={{ fontSize: 10, fontWeight: 800, color: '#FFFFFF', textTransform: 'uppercase' }}>{p.badge}</span>
+                    </div>
+                    <h3 style={{ margin: 0, fontSize: 42, fontWeight: 900, color: '#1A0B35' }}>{p.name}</h3>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#1D1D1D]/5 text-[#1D1D1D] border border-[#1D1D1D]/10 transition-all duration-500 group-hover:bg-[#1D1D1D] group-hover:text-[#FFC62A]">
-                    <program.icon className="w-7 h-7" />
+                  <div style={{
+                    width: 56, height: 56, borderRadius: 16,
+                    background: isH ? '#1A0B35' : 'white',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
+                  }}>
+                    <p.icon size={24} color={isH ? 'white' : '#5829E5'} />
                   </div>
                 </div>
 
-                <p className="text-xl font-bold text-[#1D1D1D] mb-4">
-                  {program.tagline}
-                </p>
+                <p style={{ fontSize: 18, fontWeight: 700, color: '#1A0B35', marginBottom: 12 }}>{p.tagline}</p>
+                <p style={{ fontSize: 14, color: '#334155', lineHeight: 1.6, marginBottom: 32, minHeight: 44 }}>{p.description}</p>
 
-                <p className="text-[#1D1D1D]/60 text-base leading-relaxed mb-10">
-                  {program.description}
-                </p>
-
-                <ul className="space-y-4 mb-12 flex-grow">
-                  {program.highlights.map((highlight) => (
-                    <li key={highlight} className="flex items-center gap-3 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#FFC62A]" />
-                      <span className="text-[#1D1D1D]/80 font-bold uppercase tracking-tight">
-                        {highlight}
-                      </span>
-                    </li>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 40 }}>
+                  {p.highlights.map(h => (
+                    <div key={h} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255, 255, 255, 0.4)', borderRadius: 12, padding: '10px 14px', border: '1px solid rgba(255, 255, 255, 0.5)' }}>
+                      <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#5829E5' }} />
+                      <span style={{ fontSize: 10, fontWeight: 700, color: '#1A0B35', textTransform: 'uppercase' }}>{h}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
 
-                <div className="flex items-center justify-between pt-8 border-t border-[#1D1D1D]/5">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 24, borderTop: '1px solid rgba(26, 11, 53, 0.08)' }}>
                   <div>
-                    <p className="text-[10px] uppercase tracking-widest text-[#1D1D1D]/40 font-bold mb-1">
-                      System Duration
-                    </p>
-                    <p className="font-black text-[#1D1D1D] text-lg">
-                      {program.duration}
-                    </p>
+                    <p style={{ fontSize: 10, fontWeight: 800, color: 'rgba(26, 11, 53, 0.4)', textTransform: 'uppercase', marginBottom: 4 }}>Duration</p>
+                    <p style={{ fontSize: 24, fontWeight: 900, color: '#1A0B35' }}>{p.duration}</p>
                   </div>
 
-                  <Link
-                    href={program.path}
-                    className="flex items-center gap-2 text-sm font-black text-[#1D1D1D] uppercase tracking-widest hover:gap-4 transition-all group/link"
-                  >
-                    Learn More
-                    <ArrowRight className="w-5 h-5 text-[#FFC62A] group-hover/link:translate-x-1 transition-transform" />
+                  <Link href={p.path} style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px',
+                    background: isH ? '#1A0B35' : '#5829E5',
+                    borderRadius: 99, fontSize: 12, fontWeight: 800,
+                    color: 'white', textDecoration: 'none', transition: '0.3s',
+                    boxShadow: isH ? '0 10px 20px rgba(26, 11, 53, 0.2)' : 'none'
+                  }}>
+                    Learn More <ArrowRight size={16} />
                   </Link>
                 </div>
 
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

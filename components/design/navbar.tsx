@@ -32,91 +32,84 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const scrolledStyles: React.CSSProperties = {
+    maxWidth: "90%",
+    margin: "12px auto 0",
+    padding: "16px 40px",
+    background: "rgba(255,255,255,0.92)",
+    backdropFilter: "blur(20px)",
+    borderRadius: "9999px",
+    border: "1px solid rgba(54,92,71,0.2)",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    transition: "all 500ms ease-in-out",
+  };
+
+  const topStyles: React.CSSProperties = {
+    maxWidth: "100%",
+    padding: "30px 5%",
+    background: "rgba(0,0,0,0.4)",
+    backdropFilter: "blur(12px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    transition: "all 500ms ease-in-out",
+  };
+
   return (
     <>
       {/* NAVBAR */}
       <nav
-        className={`
-          fixed top-0 left-0 w-full z-50
-          transition-all duration-500 ease-in-out
-          ${hidden ? "-translate-y-full" : "translate-y-0"}
-        `}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 50,
+          transform: hidden ? "translateY(-100%)" : "translateY(0)",
+          transition: "transform 500ms ease-in-out",
+        }}
       >
-        <div
-          className={`
-            mx-auto flex items-center
-            transition-all duration-500 ease-in-out
-            ${
-              scrolled
-                ? `
-                  max-w-[82%]
-                  px-6 py-1.5
-                  bg-white/90
-                  backdrop-blur-xl
-                  rounded-full
-                  border border-[#365c47]/20
-                  shadow-[0_8px_24px_rgba(0,0,0,0.08)]
-                  justify-between
-                  mt-2
-                `
-                : `
-                  max-w-full
-                  px-[5%]
-                  py-4
-                  bg-black/40 backdrop-blur-md
-                  justify-between
-                `
-            }
-          `}
-        >
+        <div style={scrolled ? scrolledStyles : topStyles}>
           {/* LOGO */}
-          <div className="flex items-center gap-4">
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <Image
               src="/logo.png"
               alt="TAC"
-              width={scrolled ? 95 : 110}
-              height={36}
+              width={scrolled ? 130 : 155}
+              height={52}
               priority
-              className="transition-all duration-500"
+              style={{ transition: "all 500ms" }}
             />
           </div>
 
           {/* DESKTOP NAV */}
           <ul
-            className={`
-              hidden md:flex items-center
-              ${scrolled ? "gap-5" : "gap-6"}
-            `}
+            className="hidden md:flex items-center"
+            style={{ gap: scrolled ? 40 : 44, listStyle: "none", margin: 0, padding: 0 }}
           >
             {navItems.map((item) => (
               <li
                 key={item}
                 onClick={() => setActive(item)}
-                className="relative group cursor-pointer"
+                style={{ position: "relative", cursor: "pointer" }}
+                className="group"
               >
                 <span
-                  className={`
-                    uppercase tracking-[0.15em] font-extrabold
-                    transition-all duration-300
-                    ${scrolled ? "text-[10px]" : "text-[12px]"}
-                    ${
-                      active === item
-                        ? "text-[#FFC62A]"
-                        : scrolled
-                        ? "text-[#2F2F2F] group-hover:text-[#365c47]"
-                        : "text-white group-hover:text-[#FFC62A]"
-                    }
-                  `}
+                  style={{
+                    fontWeight: 800,
+                    fontSize: active === item ? "16px" : scrolled ? "13px" : "15px",
+                    fontStyle: active === item ? "italic" : "normal",
+                    fontFamily: active === item ? "serif" : "inherit",
+                    textTransform: active === item ? "capitalize" : "uppercase",
+                    letterSpacing: active === item ? "normal" : "0.15em",
+                    color: active === item ? "#FFC62A" : scrolled ? "#2F2F2F" : "#ffffff",
+                    transition: "all 300ms",
+                  }}
                 >
-                  <span
-                    className={
-                      active === item
-                        ? "font-serif italic capitalize tracking-normal text-sm"
-                        : ""
-                    }
-                  >
-                    {item}
-                  </span>
+                  {item}
                 </span>
 
                 {/* UNDERLINE */}
@@ -138,9 +131,15 @@ export default function Navbar() {
 
           {/* MOBILE BUTTON */}
           <button
-            className={`md:hidden text-xl transition-colors ${
-              scrolled ? "text-[#2F2F2F]" : "text-white"
-            }`}
+            className="md:hidden"
+            style={{
+              fontSize: 26,
+              color: scrolled ? "#2F2F2F" : "#ffffff",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              transition: "color 300ms",
+            }}
             onClick={() => setMobileOpen(true)}
           >
             ☰
@@ -150,38 +149,45 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div
-        className={`
-          fixed inset-0 z-[60]
-          bg-[#365c47]
-          transition-transform duration-700 ease-in-out
-          ${mobileOpen ? "translate-x-0" : "translate-x-full"}
-        `}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 60,
+          background: "#365c47",
+          transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 700ms ease-in-out",
+        }}
       >
-        <div className="flex justify-between items-center px-[5%] py-5">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px 5%" }}>
           <Image
             src="/logo.png"
             alt="TAC"
-            width={95}
-            height={32}
-            className="brightness-0 invert"
+            width={120}
+            height={40}
+            style={{ filter: "brightness(0) invert(1)" }}
           />
           <button
             onClick={() => setMobileOpen(false)}
-            className="text-2xl text-[#FFC62A]"
+            style={{ fontSize: 28, color: "#FFC62A", background: "none", border: "none", cursor: "pointer" }}
           >
             ✕
           </button>
         </div>
 
-        <ul className="flex flex-col items-center gap-5 mt-10">
+        <ul style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28, marginTop: 48, listStyle: "none", padding: 0 }}>
           {navItems.map((item) => (
             <li
               key={item}
-              className={`text-lg font-extrabold tracking-tight transition-all ${
-                active === item
-                  ? "text-[#FFC62A] font-serif italic capitalize"
-                  : "text-white"
-              }`}
+              style={{
+                fontSize: 22,
+                fontWeight: 800,
+                fontStyle: active === item ? "italic" : "normal",
+                fontFamily: active === item ? "serif" : "inherit",
+                textTransform: active === item ? "capitalize" : "uppercase",
+                color: active === item ? "#FFC62A" : "#ffffff",
+                cursor: "pointer",
+                transition: "all 300ms",
+              }}
               onClick={() => {
                 setActive(item);
                 setMobileOpen(false);

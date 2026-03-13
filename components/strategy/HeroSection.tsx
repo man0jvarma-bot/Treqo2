@@ -1,114 +1,194 @@
 "use client";
 
-import Link from "next/link";
-import {
-  ArrowRight,
-  Play,
-  Calendar,
-  Clock,
-  MapPin,
-  Users,
-  Zap,
-  BookOpen,
-  Award,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Play, Calendar, Clock, MapPin, Users, Zap, BookOpen, UserCheck } from "lucide-react";
 
-export function HeroSection() {
+export default function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#FBF8E4] flex items-center">
-      
-      {/* BRAND SYSTEM BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FFC62A]/10 rounded-full blur-[140px] -mr-32 -mt-32" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#1D1D1D]/5 rounded-full blur-[120px] -ml-32 -mb-32" />
-        <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ backgroundImage: 'radial-gradient(#1D1D1D 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+    <section
+      className="relative min-h-screen overflow-hidden flex items-center"
+      style={{ 
+        background: '#F8F9FB', 
+        fontFamily: "'Segoe UI', system-ui, sans-serif" 
+      }}
+    >
+      {/* --- SIMPLE HORIZONTAL LINES BACKGROUND (Balanced Visibility) --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            opacity: 0.15, // Subtle but defined
+            backgroundImage: `repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 23px,
+              #8B5CF6 23px, 
+              #8B5CF6 24px
+            )` 
+          }}
         />
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'radial-gradient(circle at center, rgba(255,255,255,0.6) 0%, transparent 70%)' 
+        }} />
       </div>
 
-      <div className="relative z-10 w-full px-[5%] pt-28 pb-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+      <div className="relative z-10 w-full px-16 py-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 gap-16 items-center">
 
           {/* LEFT CONTENT */}
-          <div className="max-w-xl">
-            <p className="text-[#1D1D1D] text-lg font-semibold mb-4 tracking-wide uppercase opacity-80">
+          <div>
+            <p style={{ color: '#7C3AED', fontSize: '17px', fontWeight: 600, marginBottom: '6px', letterSpacing: '0.02em' }}>
               Advanced Program in
             </p>
 
-            <h1 className="leading-[1.05] mb-8">
-              <span className="block text-5xl lg:text-7xl font-black text-[#1D1D1D]">
+            <h1 style={{ margin: '0 0 28px', lineHeight: 1.05 }}>
+              <span style={{ 
+                display: 'block', 
+                fontSize: 'clamp(50px, 6vw, 78px)', 
+                fontWeight: 900, 
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+                color: '#1e1035'
+              }}>
                 Digital Marketing
               </span>
-              <span className="block text-5xl lg:text-7xl font-serif italic text-[#FFC62A] mt-2 relative">
+              <span style={{ 
+                display: 'block', 
+                fontSize: 'clamp(45px, 5.5vw, 72px)', 
+                fontWeight: 900, 
+                color: '#5829E5', 
+                lineHeight: 1.1,
+                letterSpacing: '-0.04em'
+              }}>
                 & Growth Strategy
-                <svg className="absolute -bottom-4 left-0 w-3/4 h-3 text-[#FFC62A]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="none"/>
-                </svg>
               </span>
             </h1>
 
-            {/* META LOGISTICS */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-[#1D1D1D]/70 mb-8">
+            {/* Logistics */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', marginBottom: '36px' }}>
               <Meta icon={Calendar} text="12 Weeks" />
               <Meta icon={Clock} text="Live + Self-Paced" />
               <Meta icon={MapPin} text="Online & Offline" />
               <Meta icon={Users} text="50 Seats" />
             </div>
 
-            {/* CTA AREA */}
-            <Link href="/apply">
-              <button className="bg-[#1D1D1D] hover:bg-black text-[#FBF8E4] px-8 py-4 rounded-full font-bold transition-all flex items-center gap-3 mb-8 shadow-xl shadow-black/15 hover:-translate-y-1 group">
-                APPLY NOW
-                <ArrowRight className="w-5 h-5 text-[#FFC62A] group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
+            {/* Pills */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
+              <Pill icon={Zap} text="AI-Powered Tools" />
+              <Pill icon={BookOpen} text="Learn by Doing" />
+              <Pill icon={UserCheck} text="Industry-Led Sessions" />
+            </div>
 
-            {/* TRUST SYSTEM */}
-            <div className="flex gap-12 border-t border-[#1D1D1D]/10 pt-8">
+            {/* CTA */}
+            <button
+              style={{
+                background: '#5829E5',
+                color: 'white',
+                border: 'none',
+                borderRadius: '14px',
+                padding: '16px 36px',
+                fontSize: '15px',
+                fontWeight: 800,
+                letterSpacing: '0.05em',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '52px',
+                boxShadow: '0 12px 40px rgba(88,41,229,0.15)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#471ecb';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = '#5829E5';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              APPLY NOW
+              <ArrowRight size={18} />
+            </button>
+
+            {/* Trust Footer */}
+            <div style={{ display: 'flex', gap: '48px', borderTop: '1px solid rgba(88, 41, 229, 0.1)', paddingTop: '28px' }}>
               <Trust label="Built by alumni from" value="Top B-Schools" />
               <Trust label="Mentors from" value="Google, Meta" />
               <Trust label="Backed by" value="Industry Leaders" />
             </div>
           </div>
 
-          {/* RIGHT MEDIA BLOCK */}
-          <div className="relative">
-            <div className="rounded-[32px] bg-gradient-to-br from-[#1D1D1D] via-[#1D1D1D] to-[#FFC62A]/40 p-[2px] shadow-2xl">
-              <div className="rounded-[30px] bg-gradient-to-br from-white to-[#FBF8E4] p-4">
-                <div className="relative aspect-[4/3] rounded-[22px] overflow-hidden group">
-                  <img
-                    src="/images/home-page.jpg"
-                    alt="Founder's Vision"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1D1D1D]/50 via-transparent to-transparent" />
+          {/* RIGHT MEDIA SECTION */}
+          <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+            <div style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: '540px',
+              background: 'white',
+              borderRadius: '40px',
+              padding: '20px',
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.04)'
+            }}>
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                aspectRatio: '1.2/1',
+                borderRadius: '28px',
+                overflow: 'hidden',
+                background: '#1A0B35'
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(160deg, #2d1060 0%, #0B041A 50%, #2d1060 100%)',
+                  opacity: 0.9
+                }} />
+                
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  padding: '24px'
+                }}>
+                  <h2 style={{
+                    color: 'white',
+                    fontSize: '52px',
+                    fontWeight: 900,
+                    lineHeight: 1.1,
+                  }}>
+                    Fortune 500<br />Tech Leader
+                  </h2>
+                </div>
 
-                  {/* Video Play Trigger */}
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <button className="w-20 h-20 rounded-full bg-white shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95 group/play">
-                      <Play className="w-8 h-8 text-[#1D1D1D] fill-[#1D1D1D] ml-1 group-hover/play:text-[#FFC62A] group-hover/play:fill-[#FFC62A] transition-colors" />
-                    </button>
-                  </div>
-
-                  <div className="absolute bottom-6 left-6 bg-[#FFC62A] text-[#1D1D1D] font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 shadow-lg">
-                    <Clock className="w-4 h-4" />
-                    2 MIN WATCH
-                  </div>
-
-                  <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-xl border border-[#1D1D1D]/10 text-right">
-                    <p className="font-bold text-sm text-[#1D1D1D]">Founder’s Vision</p>
-                    <p className="text-[10px] uppercase tracking-wider text-[#1D1D1D]/50 font-bold">
-                      TAC Executive Team
-                    </p>
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <div style={{
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '50%',
+                    background: 'white',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer'
+                  }}>
+                    <Play size={22} color="#5829E5" fill="#5829E5" style={{ marginLeft: '3px' }} />
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Float Stats */}
-            <Stat value="500+" label="Students Trained" className="-left-8 top-24" />
-            <Stat value="95%" label="Outcome Rate" className="-right-8 bottom-24" />
           </div>
 
         </div>
@@ -117,39 +197,40 @@ export function HeroSection() {
   );
 }
 
-/* COMPONENTS STYLED TO SYSTEM */
-
-function Meta({ icon: Icon, text }: any) {
+function Meta({ icon: Icon, text }: { icon: any, text: string }) {
   return (
-    <div className="flex items-center gap-2">
-      <Icon className="w-4 h-4 text-[#FFC62A]" />
-      <span className="font-medium">{text}</span>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#1e1035', fontSize: '14px', fontWeight: 600 }}>
+      <Icon size={16} color="#5829E5" />
+      <span>{text}</span>
     </div>
   );
 }
 
-function Trust({ label, value }: any) {
+function Pill({ icon: Icon, text }: { icon: any, text: string }) {
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      padding: '8px 18px',
+      background: 'white',
+      border: '1px solid #E2E8F0',
+      borderRadius: '999px',
+      color: '#1e1035',
+      fontSize: '13px',
+      fontWeight: 700
+    }}>
+      <Icon size={15} color="#5829E5" />
+      {text}
+    </div>
+  );
+}
+
+function Trust({ label, value }: { label: string, value: string }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-[#1D1D1D]/40 font-bold mb-1">
-        {label}
-      </p>
-      <p className="font-extrabold text-sm text-[#1D1D1D]">
-        {value}
-      </p>
-    </div>
-  );
-}
-
-function Stat({ value, label, className }: any) {
-  return (
-    <div
-      className={`absolute hidden lg:block bg-white/90 backdrop-blur-md rounded-2xl p-5 shadow-2xl border-l-4 border-[#FFC62A] ${className} transition-transform hover:-translate-y-2`}
-    >
-      <p className="text-3xl font-black text-[#1D1D1D]">{value}</p>
-      <p className="text-[10px] uppercase tracking-tighter font-bold text-[#1D1D1D]/50">
-        {label}
-      </p>
+      <p style={{ fontSize: '10px', color: '#7C3AED', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 4px' }}>{label}</p>
+      <p style={{ fontSize: '14px', fontWeight: 800, color: '#1e1035', margin: 0 }}>{value}</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import CaseStudiesSection from "@/components/strategy/CaseStudiesSection";
 import { TrustedBySlider } from "@/components/strategy/TrustedBySlider";
 import { FrameworkSection } from "@/components/strategy/FrameworkSection";
-import { HeroSection } from "@/components/strategy/HeroSection";
+import HeroSection from "@/components/strategy/HeroSection";
 import Navbar from "@/components/strategy/Navbar";
 import { ProgramsSection } from "@/components/strategy/ProgramSection";
 //import ProjectsStudiesSection from "@/components/stratergy/projects";
@@ -17,6 +17,12 @@ import Testimonials from "@/components/strategy/Testimonials";
 import FriendlyKnowledgeHub from "@/components/strategy/Courses";
 import Tacsuite from "@/components/strategy/TACsuite";
 import Tools from "@/components/strategy/Tools";
+import TacExecutionPipeline from "@/components/strategy/sidescroll";
+import FAQSection from "@/components/strategy/FAQ";
+import Case2StudiesSection from "@/components/strategy/casestudy2";
+
+
+
 
 
 
@@ -30,6 +36,8 @@ export default function Home() {
       <FrameworkSection />
       <TrustedBySlider />
       <CaseStudiesSection />
+      <Case2StudiesSection />
+      <TacExecutionPipeline />
       <TermToolsPage />
       <ToolStackSection />
       <MarketingGrowthEngine />
@@ -39,6 +47,7 @@ export default function Home() {
       <FriendlyKnowledgeHub />
       <Tools />
       <Testimonials />
+      <FAQSection />
       <TacFooterLight />
     </>
   );

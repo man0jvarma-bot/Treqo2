@@ -1,217 +1,260 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  BarChart3, 
-  Cpu, 
-  MousePointerClick, 
-  Share2, 
-  ArrowUpRight, 
+import {
+  BarChart3,
+  Cpu,
+  MousePointerClick,
+  Share2,
+  ArrowUpRight,
   CheckCircle2,
   TrendingUp,
   Zap,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
 const marketingPillars = [
   {
     id: "ai",
     title: "AI-Powered Elevation",
-    icon: <Cpu size={24} />,
-    color: "#365C47",
-    summary: "Leveraging Large Language Models to automate hyper-personalized customer journeys.",
+    Icon: Cpu,
+    color: "#4F46E5",
+    summary: "Leveraging Large Language Models to automate hyper-personalized customer journeys at scale.",
     metrics: { label: "Efficiency Boost", value: "+140%" },
-    features: [
-      "Predictive intent scoring",
-      "Automated creative production",
-      "24/7 AI sales assistants",
-      "Sentiment-driven retargeting"
-    ],
-    description: "In 2026, AI is the core. We move beyond simple automation to Predictive Experience Design inside the TAC Suite Online."
+    features: ["Predictive intent scoring", "Automated creative production", "24/7 AI sales assistants", "Sentiment-driven retargeting"],
+    tag: "Module 01",
   },
   {
     id: "content",
     title: "Organic Authority",
-    icon: <Share2 size={24} />,
-    color: "#FFC62A",
-    summary: "Dominating search engines and social feeds through high-signal, expert-led content.",
+    Icon: Share2,
+    color: "#7C3AED",
+    summary: "Dominating search engines and social feeds through high-signal, expert-led content systems.",
     metrics: { label: "Trust Factor", value: "9.2/10" },
-    features: [
-      "Answer Engine Optimization (AEO)",
-      "Founder-led content flywheels",
-      "Short-form video dominance",
-      "UGC conversion engines"
-    ],
-    description: "Traditional SEO has evolved into AEO. We focus on being the primary source for AI answer engines by building authoritative content."
+    features: ["Answer Engine Optimization (AEO)", "Founder-led content flywheels", "Short-form video dominance", "UGC conversion engines"],
+    tag: "Module 02",
   },
   {
     id: "performance",
     title: "Performance Max",
-    icon: <MousePointerClick size={24} />,
-    color: "#FFC62A",
-    summary: "Scaling high-ticket revenue through data-backed paid acquisition and CRO.",
+    Icon: MousePointerClick,
+    color: "#4F46E5",
+    summary: "Scaling high-ticket revenue through data-backed paid acquisition and conversion rate optimization.",
     metrics: { label: "Average ROAS", value: "5.8x" },
-    features: [
-      "Cross-platform identity resolution",
-      "Creative testing frameworks",
-      "Post-purchase LTV scaling",
-      "Dynamic pricing optimization"
-    ],
-    description: "Performance marketing is now about creative differentiation. We win through superior psychological hooks."
+    features: ["Cross-platform identity resolution", "Creative testing frameworks", "Post-purchase LTV scaling", "Dynamic pricing optimization"],
+    tag: "Module 03",
   },
   {
     id: "data",
     title: "Data Intelligence",
-    icon: <BarChart3 size={24} />,
-    color: "#365C47",
-    summary: "Turning first-party data into a competitive moat that competitors can't replicate.",
+    Icon: BarChart3,
+    color: "#7C3AED",
+    summary: "Turning first-party data into a competitive moat that competitors can never replicate.",
     metrics: { label: "Data Accuracy", value: "99.9%" },
-    features: [
-      "First-party data integration",
-      "Zero-click attribution models",
-      "Privacy-first tracking (CDP)",
-      "Revenue forecasting models"
-    ],
-    description: "Data is the new oil. We build custom data pipelines that unify your CRM and analytics into a single source of truth."
-  }
+    features: ["First-party data integration", "Zero-click attribution models", "Privacy-first tracking (CDP)", "Revenue forecasting models"],
+    tag: "Module 04",
+  },
 ];
 
 export default function MarketingGrowthEngine() {
   const [activeTab, setActiveTab] = useState(marketingPillars[0]);
 
   return (
-    <section className="py-24 px-[5%] bg-[#1A1A1A] text-white overflow-hidden relative font-sans">
-      {/* Background Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
-           style={{ backgroundImage: 'radial-gradient(#F9F7E8 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
-      />
+    <section style={{
+      background: '#B39CD4',
+      padding: '140px 0',
+      overflow: 'hidden',
+      position: 'relative',
+      fontFamily: "'DM Sans', sans-serif",
+    }}>
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
-        
-        {/* Header Section */}
-        <div className="text-center mb-20">
-          <motion.div 
+      {/* 1. SEAMLESS TOP FLOW: Multi-stop gradient to erase the horizontal line */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '300px',
+        background: 'linear-gradient(to bottom, #E6D7F3 0%, rgba(230, 215, 243, 0.5) 40%, rgba(179, 156, 212, 0) 100%)',
+        zIndex: 1,
+        pointerEvents: 'none'
+      }} />
+
+      {/* 2. CONNECTED GRID: Matches 80px frequency of previous component */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.06 }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `
+            linear-gradient(to right, white 1px, transparent 1px),
+            linear-gradient(to bottom, white 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px' // Perfect connection
+        }} />
+      </div>
+
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 5%', position: 'relative', zIndex: 10 }}>
+
+        {/* HEADER SECTION */}
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center justify-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-black/40"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              background: 'white', border: '1px solid rgba(255,255,255,0.4)',
+              borderRadius: '999px', padding: '6px 16px', marginBottom: '24px',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
+            }}
           >
-            <Sparkles size={12} className="text-[#FFC62A]" />
-            <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-white/60">
-              The TAC Suite Online
-            </span>
+            <Sparkles size={12} color="#7C3AED" />
+            <span style={{ fontSize: '10px', fontWeight: 900, color: '#7C3AED', letterSpacing: '0.25em', textTransform: 'uppercase' }}>Growth Architecture</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Marketing <br />
-            <span className="font-serif italic font-medium text-[#FFC62A]">Ecosystem</span>
+          <h2 style={{ margin: '0 0 20px', lineHeight: 1, letterSpacing: '-0.04em' }}>
+            <span style={{
+              display: 'block', fontSize: 'clamp(44px, 6vw, 76px)', fontWeight: 900,
+              background: 'linear-gradient(to right, #c3c1d6 0%, #8d99ff 35%, #a574ff 36%, #c9d0ff 100%);',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
+            }}>Marketing</span>
+            <span style={{ display: 'block', fontSize: 'clamp(44px, 6vw, 76px)', fontWeight: 900, color: '#1A0B35', fontStyle: 'italic' }}>Ecosystem</span>
           </h2>
-          <p className="max-w-xl mx-auto text-white/40 text-base md:text-lg font-medium leading-relaxed">
-            A unified, AI-driven engine built to transform your digital presence into a high-performance growth machine.
+          <p style={{ fontSize: '17px', color: 'rgba(26, 11, 53, 0.6)', fontWeight: 600, maxWidth: '500px', margin: '0 auto', lineHeight: 1.6 }}>
+            A unified execution framework engineered to dominate customer acquisition loops.
           </p>
         </div>
 
-        {/* Interactive Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_480px] gap-8 items-stretch">
-          
-          {/* Strategic Insights Card */}
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.4 }}
-                className="bg-black/40 rounded-[48px] p-8 md:p-14 h-full flex flex-col justify-between border border-white/5 backdrop-blur-xl relative overflow-hidden shadow-2xl"
-              >
-                <div className="relative z-10">
-                  <div className="flex items-center gap-6 mb-12">
-                    <div className="w-16 h-16 rounded-2xl bg-[#365C47] text-white flex items-center justify-center shadow-lg shadow-[#365C47]/20">
-                      {activeTab.icon}
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#365C47] mb-1 block">Module Strategy</span>
-                      <h3 className="text-3xl font-bold tracking-tight">{activeTab.title}</h3>
-                    </div>
-                  </div>
+        {/* MAIN GRID */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: '28px', alignItems: 'stretch' }}>
 
-                  <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight mb-10 text-[#F9F7E8]">
-                    "{activeTab.summary}"
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    {activeTab.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <div className="mt-1 text-[#FFC62A]"><CheckCircle2 size={18} /></div>
-                        <span className="text-base font-bold text-white/50">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="relative z-10 pt-10 border-t border-white/10 flex flex-wrap items-center justify-between gap-8">
-                  <div className="flex gap-10">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase text-white/20 tracking-widest mb-2">{activeTab.metrics.label}</p>
-                      <p className="text-4xl font-bold text-[#FFC62A]">{activeTab.metrics.value}</p>
-                    </div>
-                  </div>
-                  
-                  <button className="bg-[#365C47] text-white px-10 py-5 rounded-2xl font-bold uppercase text-[10px] tracking-[0.2em] shadow-xl hover:bg-[#FFC62A] hover:text-black transition-all flex items-center gap-3 group">
-                    Enroll in Module <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Selector Navigation */}
-          <div className="flex flex-col gap-3">
-            {marketingPillars.map((pillar) => (
-              <button
-                key={pillar.id}
-                onClick={() => setActiveTab(pillar)}
-                className={`group relative p-6 rounded-[32px] text-left transition-all duration-300 flex items-center justify-between border-2
-                  ${activeTab.id === pillar.id 
-                    ? "bg-[#FFC62A] border-[#FFC62A] text-black shadow-lg shadow-[#FFC62A]/10" 
-                    : "bg-black/40 border-white/5 text-white/40 hover:bg-black/60 hover:text-white"
-                  }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors
-                    ${activeTab.id === pillar.id ? "bg-black text-[#FFC62A]" : "bg-white/5 text-white/20"}
-                  `}>
-                    {pillar.icon}
+          {/* LEFT — Active card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab.id}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.5)',
+                borderRadius: '44px',
+                padding: '64px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                border: '1px solid white',
+                backdropFilter: 'blur(25px)',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 40px 100px rgba(124, 58, 237, 0.15)'
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '48px' }}>
+                  <div style={{
+                    width: '72px', height: '72px', borderRadius: '22px',
+                    background: activeTab.color,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: `0 15px 35px ${activeTab.color}40`,
+                  }}>
+                    <activeTab.Icon size={32} color="white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg leading-none mb-1">{pillar.title}</h4>
-                    <span className={`text-[9px] font-bold uppercase tracking-widest ${activeTab.id === pillar.id ? "text-black/60" : "text-white/20"}`}>Module Details</span>
+                    <span style={{ fontSize: '12px', fontWeight: 900, color: activeTab.color, textTransform: 'uppercase', letterSpacing: '0.2em' }}>{activeTab.tag}</span>
+                    <h3 style={{ margin: 0, fontSize: '46px', fontWeight: 900, color: '#1A0B35', letterSpacing: '-0.03em' }}>{activeTab.title}</h3>
                   </div>
                 </div>
-                
-                <TrendingUp size={18} className={`transition-all ${activeTab.id === pillar.id ? "text-black" : "text-white/20"}`} />
-              </button>
-            ))}
 
-            {/* System Intelligence Widget */}
-            <div className="mt-auto bg-black/40 border border-white/5 rounded-[32px] p-8 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FFC62A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <Zap className="absolute -bottom-4 -right-4 text-[#FFC62A]/10 scale-[4]" />
-              
-              <h5 className="text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2 relative z-10 text-white/80">
-                <div className="w-2 h-2 rounded-full bg-[#FFC62A] animate-pulse shadow-[0_0_10px_#FFC62A]" />
-                Live Node Analysis
-              </h5>
-              <p className="text-white/40 text-sm font-medium leading-relaxed mb-6 relative z-10">
-                The TAC online suite maps <span className="text-[#FFC62A] font-bold">14.2M growth signals</span> to ensure our curriculum stays ahead of 2026 standards.
-              </p>
-              
-              <div className="flex items-center gap-3 bg-white/5 self-start px-4 py-2 rounded-xl border border-white/5 relative z-10">
-                <div className="text-[#FFC62A]"><TrendingUp size={14} /></div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">Node: Online-Suite</span>
+                <p style={{
+                  margin: '0 0 48px', fontSize: '22px', fontWeight: 600,
+                  color: '#4B5563', lineHeight: 1.6,
+                  paddingLeft: '28px', borderLeft: `5px solid ${activeTab.color}`,
+                }}>
+                  "{activeTab.summary}"
+                </p>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                  {activeTab.features.map((feature, i) => (
+                    <div key={i} style={{
+                      display: 'flex', alignItems: 'center', gap: '14px',
+                      padding: '20px 24px', background: 'rgba(255,255,255,0.4)',
+                      border: '1px solid rgba(255,255,255,0.6)', borderRadius: '20px',
+                    }}>
+                      <CheckCircle2 size={18} color={activeTab.color} />
+                      <span style={{ fontSize: '15px', fontWeight: 700, color: '#1A0B35' }}>{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              <div style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                marginTop: '56px', paddingTop: '44px', borderTop: '1px solid rgba(26, 11, 53, 0.1)',
+              }}>
+                <div>
+                  <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: 900, color: 'rgba(26, 11, 53, 0.4)', textTransform: 'uppercase' }}>{activeTab.metrics.label}</p>
+                  <p style={{ margin: 0, fontSize: '56px', fontWeight: 900, color: activeTab.color, lineHeight: 1 }}>{activeTab.metrics.value}</p>
+                </div>
+                <button style={{
+                  background: '#1A0B35', color: 'white', border: 'none',
+                  borderRadius: '18px', padding: '18px 36px', fontSize: '13px', fontWeight: 900,
+                  textTransform: 'uppercase', cursor: 'pointer', boxShadow: `0 15px 35px rgba(0,0,0,0.2)`,
+                  display: 'flex', alignItems: 'center', gap: '10px'
+                }}>
+                  Curriculum <ArrowUpRight size={18} />
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* RIGHT — Selectors */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {marketingPillars.map((pillar) => {
+              const isActive = activeTab.id === pillar.id;
+              return (
+                <button
+                  key={pillar.id}
+                  onClick={() => setActiveTab(pillar)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: '20px',
+                    padding: '28px', borderRadius: '28px', textAlign: 'left',
+                    background: isActive ? pillar.color : 'rgba(255,255,255,0.2)',
+                    border: `1px solid ${isActive ? pillar.color : 'rgba(255,255,255,0.4)'}`,
+                    cursor: 'pointer', transition: 'all 0.3s ease',
+                    transform: isActive ? 'translateX(-10px)' : 'none',
+                  }}
+                >
+                  <div style={{
+                    width: '52px', height: '52px', borderRadius: '15px',
+                    background: isActive ? 'rgba(255,255,255,0.2)' : 'white',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                  }}>
+                    <pillar.Icon size={22} color={isActive ? 'white' : pillar.color} />
+                  </div>
+                  <div>
+                    <p style={{ margin: 0, fontSize: '10px', fontWeight: 900, color: isActive ? 'white' : pillar.color, textTransform: 'uppercase' }}>{pillar.tag}</p>
+                    <p style={{ margin: 0, fontSize: '17px', fontWeight: 800, color: isActive ? 'white' : '#1A0B35' }}>{pillar.title}</p>
+                  </div>
+                </button>
+              );
+            })}
+
+            {/* AI Node Widget */}
+            <div style={{
+              marginTop: 'auto', padding: '32px', borderRadius: '32px',
+              background: '#1A0B35',
+              border: '1px solid rgba(255,255,255,0.1)', position: 'relative', overflow: 'hidden'
+            }}>
+              <Zap size={70} style={{ position: 'absolute', right: '-15px', bottom: '-15px', opacity: 0.1, color: 'white' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#4ADE80', boxShadow: '0 0 12px #4ADE80' }} />
+                <span style={{ fontSize: 11, fontWeight: 900, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase' }}>Treqo Intelligence</span>
+              </div>
+              <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
+                Processing <span style={{ color: 'white', fontWeight: 800 }}>14.2M signals</span> to ensure your path stays ahead of the market.
+              </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
